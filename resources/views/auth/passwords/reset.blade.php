@@ -1,71 +1,137 @@
-@extends('layouts.app')
+<!DOCTYPE html>
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Reset Password') }}</div>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('password.request') }}">
-                        @csrf
 
-                        <input type="hidden" name="token" value="{{ $token }}">
+  <title>Ticki - Changement de mot de passe</title>
 
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+  <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin" rel="stylesheet" type="text/css">
+  <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css">
+  <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ $email ?? old('email') }}" required autofocus>
 
-                                @if ($errors->has('email'))
-                                    <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
+  <!-- Core stylesheets -->
+  <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <link href="css/pixeladmin.min.css" rel="stylesheet" type="text/css">
+  <link href="css/widgets.min.css" rel="stylesheet" type="text/css">
 
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+  <!-- Theme -->
+  <link href="css/themes/clean.min.css" rel="stylesheet" type="text/css">
 
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+  <!-- Pace.js -->
+  <script src="pace/pace.min.js"></script>
 
-                                @if ($errors->has('password'))
-                                    <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
+  <!-- Custom styling -->
+  <style>
+    .page-signin-header {
+      box-shadow: 0 2px 2px rgba(0,0,0,.05), 0 1px 0 rgba(0,0,0,.05);
+    }
 
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+    .page-signin-header .btn {
+      position: absolute;
+      top: 12px;
+      right: 15px;
+    }
 
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control{{ $errors->has('password_confirmation') ? ' is-invalid' : '' }}" name="password_confirmation" required>
+    html[dir="rtl"] .page-signin-header .btn {
+      right: auto;
+      left: 15px;
+    }
 
-                                @if ($errors->has('password_confirmation'))
-                                    <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('password_confirmation') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
+    .page-signin-container {
+      width: auto;
+      margin: 30px 10px;
+    }
 
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Reset Password') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-@endsection
+    .page-signin-container form {
+      border: 0;
+      box-shadow: 0 2px 2px rgba(0,0,0,.05), 0 1px 0 rgba(0,0,0,.05);
+    }
+
+    @media (min-width: 544px) {
+      .page-signin-container {
+        width: 350px;
+        margin: 60px auto;
+      }
+    }
+
+    .page-signin-social-btn {
+      width: 40px;
+      padding: 0;
+      line-height: 40px;
+      text-align: center;
+      border: none !important;
+    }
+
+    #page-signin-forgot-form { display: none; }
+  </style>
+  <!-- / Custom styling -->
+</head>
+<body>
+  <div class="page-signin-header p-a-2 text-sm-center bg-white">
+    <a class="px-demo-brand px-demo-brand-lg text-default" href="index.html">Ticki</a>
+  </div>
+
+  <!-- Sign In form -->
+
+  <div class="page-signin-container" id="page-signin-form">
+    <h2 class="m-t-0 m-b-4 text-xs-center font-weight-semibold font-size-20">Réinitialiser son mot de passe</h2>
+
+    <form method="POST" action="{{ route('password.request') }}" class="panel p-a-4">
+         @csrf
+      <fieldset class="form-group form-group-lg">
+        <input id="email" placeholder="Ton email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ $email ?? old('email') }}" required autofocus>
+        @if ($errors->has('email'))
+            <span class="invalid-feedback">
+                <strong>{{ $errors->first('email') }}</strong>
+            </span>
+        @endif
+      </fieldset>
+
+      <fieldset class="form-group form-group-lg">
+          <input id="password" placeholder="Ton mot de passe" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+          @if ($errors->has('password'))
+              <span class="invalid-feedback">
+                  <strong>{{ $errors->first('password') }}</strong>
+              </span>
+          @endif
+      </fieldset>
+
+      <fieldset class="form-group form-group-lg">
+          <input id="password-confirm" placeholder="Ton mot de passe" type="password" class="form-control{{ $errors->has('password_confirmation') ? ' is-invalid' : '' }}" name="password_confirmation" required>
+          @if ($errors->has('password_confirmation'))
+              <span class="invalid-feedback">
+                  <strong>{{ $errors->first('password_confirmation') }}</strong>
+              </span>
+          @endif
+      </fieldset>
+
+      <button type="submit" class="btn btn-block btn-lg btn-primary m-t-3">Envoyez</button>
+
+    </form>
+
+  </div>
+  <!-- / Sign In form -->
+
+
+
+  <!-- / Reset form -->
+
+  <!-- ==============================================================================
+  |
+  |  SCRIPTS
+  |
+  =============================================================================== -->
+
+  <!-- jQuery -->
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/pixeladmin.min.js"></script>
+
+</body>
+</html>

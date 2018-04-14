@@ -163,7 +163,7 @@
                     </span>
                 @endif
 
-                <button type="submit" class="btn btn-block btn-lg btn-primary m-t-3">Envoyez un mail de réinitialisation de mot de passe</button>
+                <button type="submit" class="btn btn-block btn-lg btn-primary m-t-3">Envoyez le mail</button>
                 <div class="m-t-2 text-muted">
                   <a href="#" id="page-signin-forgot-back">&larr; Back</a>
                 </div>
