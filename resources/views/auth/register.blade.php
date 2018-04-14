@@ -92,7 +92,7 @@
 
           <fieldset class="page-signup-form-group form-group form-group-lg">
               <div class="page-signup-icon text-muted"><i class="ion-ios-person-outline"></i></div>
-              <input id="firstname" type="text" class="page-signup-form-control form-control{{ $errors->has('firstname') ? ' is-invalid' : '' }}" name="firstname" value="{{ old('firstname') }}" required placeholder="Prénom">
+              <input id="firstname" type="text" class="page-signup-form-control form-control{{ $errors->has('firstname') ? ' is-invalid' : '' }}" name="firstname" value="{{ old('firstname') }}" required autofocus placeholder="Prénom">
               @if ($errors->has('firstname'))
                   <span class="invalid-feedback">
                       <strong>{{ $errors->first('firstname') }}</strong>
@@ -102,7 +102,7 @@
 
             <fieldset class="page-signup-form-group form-group form-group-lg">
                 <div class="page-signup-icon text-muted"><i class="ion-ios-person"></i></div>
-                <input id="name" type="text" class="page-signup-form-control form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus placeholder="Nom">
+                <input id="name" type="text" class="page-signup-form-control form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required placeholder="Nom">
                 @if ($errors->has('name'))
                     <span class="invalid-feedback">
                         <strong>{{ $errors->first('name') }}</strong>
