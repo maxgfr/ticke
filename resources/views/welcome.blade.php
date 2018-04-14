@@ -39,8 +39,12 @@
         <ul class="nav navbar-nav navbar-right">
           <li><a href="#features" class="scroll-to">FONCTIONNALITÉS</a></li>
           <li><a href="#pricing" class="scroll-to">PRIX</a></li>
+          @guest
           <li><a href="{{route ('register')}}" class="btn-primary">JE DÉCOUVRE TICKI</a></li>
           <li><a href="{{route ('login')}}">SE CONNECTER</a></li>
+          @else
+          <li><a href="{{route ('login')}}" class="btn-primary">ACCEDER A MON ESPACE</a></li>
+          @endguest
         </ul>
       </div>
     </div>
