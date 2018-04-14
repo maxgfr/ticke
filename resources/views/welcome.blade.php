@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 
-  <title>Tické</title>
+  <title>Ticki</title>
 
   <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin" rel="stylesheet" type="text/css">
   <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
@@ -30,17 +30,17 @@
   <nav class="navbar px-navbar">
     <div class="container">
       <div class="navbar-header">
-        <a href="#home" class="scroll-to navbar-brand">Tické</a>
+        <a href="#home" class="scroll-to navbar-brand">Ticki</a>
       </div>
 
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false"><i class="navbar-toggle-icon"></i></button>
 
       <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="#features" class="scroll-to">FEATURES</a></li>
-          <li><a href="#pricing" class="scroll-to">PRICING</a></li>
-          <li><a href="#customers" class="scroll-to">CUSTOMERS</a></li>
-          <li><a href="#about-us" class="scroll-to">ABOUT US</a></li>
+          <li><a href="#features" class="scroll-to">FONCTIONNALITÉS</a></li>
+          <li><a href="#pricing" class="scroll-to">PRIX</a></li>
+          <li><a href="{{route ('register')}}" class="btn-primary">JE DÉCOUVRE TICKI</a></li>
+          <li><a href="{{route ('login')}}">SE CONNECTER</a></li>
         </ul>
       </div>
     </div>
@@ -52,16 +52,16 @@
   <div id="landing-hero" class="text-xs-center clearfix">
     <div class="container">
       <!-- Header -->
-      <h1 class="font-weight-semibold">Lorem Ipsum Dolor</h1>
+      <h1 class="font-weight-semibold">Ticki</h1>
       <h2 class="font-weight-light">
         Lorem ipsum dolor sit amet, singulis efficiendi necessitatibus qui ad
       </h2>
 
       <!-- Buttons -->
       <div>
-        <a href="#" class="btn btn-rounded btn-xl btn-primary m-x-1">Join Us</a>
+        <a href="#" class="btn btn-rounded btn-xl btn-primary m-x-1">Souscrire</a>
         <a href="#" class="btn btn-xl btn-outline btn-outline-colorless-inverted btn-rounded m-x-1">
-          Learn More
+          En savoir plus
         </a>
       </div>
 
@@ -78,7 +78,7 @@
   <a class="position-relative" name="features"></a>
   <div class="landing-section landing-features-grid bg-white b-y-1">
     <div class="container">
-      <h1 class="landing-heading text-xs-center">Features</h1>
+      <h1 class="landing-heading text-xs-center">Fonctionnalités</h1>
       <h2 class="landing-subheading text-xs-center text-muted">Lorem ipsum dolor sit amet, singulis efficiendi necessitatibus qui ad</h2>
 
       <div class="row">
@@ -294,155 +294,6 @@
           </div>
 
         </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Clients -->
-
-  <a class="position-relative" name="customers"></a>
-  <div class="landing-section landing-clients bg-white">
-    <div class="container">
-      <h1 class="landing-heading text-xs-center">What Our Clients Say</h1>
-
-      <div class="owl-carousel owl-carousel-inverted">
-        <div class="landing-clients-review">
-          <blockquote>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut a quam ac lacus varius suscipit. Donec vitae consectetur est. Vestibulum rhoncus, libero et ornare porta, elit neque imperdiet metus, id imperdiet lorem nunc eget lorem.
-          </blockquote>
-          <footer>
-            <img src="assets/demo/avatars/2.jpg">
-            Robert Jang<br>
-            <a href="#">EXAMPLE.COM</a>
-          </footer>
-        </div>
-        <div class="landing-clients-review">
-          <blockquote>
-            Praesent viverra et nibh a volutpat. Phasellus ultrices tristique magna vitae vulputate.
-          </blockquote>
-          <footer>
-            <img src="assets/demo/avatars/3.jpg">
-            Michelle Bortz<br>
-            <a href="#">XYZ LTD.</a>
-          </footer>
-        </div>
-        <div class="landing-clients-review">
-          <blockquote>
-            Cras elementum, felis eget eleifend volutpat, urna mauris cursus orci, vitae interdum turpis arcu in erat. Donec sollicitudin scelerisque metus ac volutpat.
-          </blockquote>
-          <footer>
-            <img src="assets/demo/avatars/4.jpg">
-            Timothy Owens<br>
-            <a href="#">SITE.COM</a>
-          </footer>
-        </div>
-        <div class="landing-clients-review">
-          <blockquote>
-            Vivamus accumsan libero mi, nec aliquam mi pretium eget. Donec a ex id tortor gravida lacinia nec sit amet mauris. Sed eros erat, hendrerit sed justo id, facilisis consequat metus.
-          </blockquote>
-          <footer>
-            <img src="assets/demo/avatars/5.jpg">
-            Denise Steiner<br>
-            <a href="#">COMPANY INC.</a>
-          </footer>
-        </div>
-        <div class="landing-clients-review">
-          <blockquote>
-            Integer et metus lobortis, lacinia turpis at, consequat ante.
-          </blockquote>
-          <footer>
-            <img src="assets/demo/avatars/1.jpg">
-            John Doe<br>
-            <a href="#">ONLINE.COM</a>
-          </footer>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Client logos -->
-
-  <div class="landing-section landing-client-logos bg-white">
-    <div class="container">
-      <img src="assets/demo/customers/1.png">
-      <img src="assets/demo/customers/2.png">
-      <img src="assets/demo/customers/3.png">
-      <img src="assets/demo/customers/4.png">
-      <img src="assets/demo/customers/5.png">
-      <img src="assets/demo/customers/6.png">
-      <img src="assets/demo/customers/7.png">
-      <img src="assets/demo/customers/8.png">
-      <img src="assets/demo/customers/9.png">
-      <img src="assets/demo/customers/10.png">
-      <img src="assets/demo/customers/11.png">
-      <img src="assets/demo/customers/12.png">
-      <img src="assets/demo/customers/13.png">
-      <img src="assets/demo/customers/14.png">
-      <img src="assets/demo/customers/15.png">
-      <img src="assets/demo/customers/16.png">
-      <img src="assets/demo/customers/17.png">
-    </div>
-  </div>
-  <hr class="m-y-0">
-
-  <!-- Team -->
-
-  <a class="position-relative" name="about-us"></a>
-  <div class="landing-section">
-    <div class="container">
-      <h1 class="landing-heading text-xs-center">The Team</h1>
-      <h2 class="landing-subheading text-muted text-xs-center">Meet our team</h2>
-
-      <div class="row">
-
-        <div class="col-md-6 col-lg-3">
-          <div class="landing-team panel bg-transparent">
-            <div class="panel-body">
-              <img class="photo" src="assets/demo/avatars/5.jpg" alt="">
-              <p class="name">Denise Steiner</p>
-              <p class="post text-muted">CUSTOMER SUPPORT SPECIALIST</p>
-              <hr>
-              <p class="bio">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent condimentum maximus lectus eget auctor.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-6 col-lg-3">
-          <div class="landing-team panel bg-transparent">
-            <div class="panel-body">
-              <img class="photo" src="assets/demo/avatars/2.jpg" alt="">
-              <p class="name">Robert Jang</p>
-              <p class="post text-muted">FINANCIAL DIRECTOR</p>
-              <hr>
-              <p class="bio">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent condimentum maximus lectus eget auctor.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-6 col-lg-3">
-          <div class="landing-team panel bg-transparent">
-            <div class="panel-body">
-              <img class="photo" src="assets/demo/avatars/3.jpg" alt="">
-              <p class="name">Michelle Bortz</p>
-              <p class="post text-muted">DESIGNER</p>
-              <hr>
-              <p class="bio">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent condimentum maximus lectus eget auctor.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-6 col-lg-3">
-          <div class="landing-team panel bg-transparent">
-            <div class="panel-body">
-              <img class="photo" src="assets/demo/avatars/4.jpg" alt="">
-              <p class="name">Timothy Owens</p>
-              <p class="post text-muted">SENIOR ENGINEER</p>
-              <hr>
-              <p class="bio">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent condimentum maximus lectus eget auctor.</p>
-            </div>
-          </div>
-        </div>
-
       </div>
     </div>
   </div>
