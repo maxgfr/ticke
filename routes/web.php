@@ -64,3 +64,9 @@ Route::post('register', [
 
 /** AUTHENTIFIER */
 Route::get('/home', 'HomeController@index')->name('home');
+Route::resource('restaurant', 'RestaurantController');
+Route::get('/restaurant/{restaurant_id}/tickets', 'BatchTicketController@indexId')->name('batch_restaurant');
+Route::post('/upload_tickets', 'BatchTicketController@import')->name('upload_tickets');
+Route::get('/batch/{id}', 'BatchTicketController@showBatch')->name('show_batch');
+Route::delete('/etablissements/{etablissements_id}/tickets_restaurant/{id}', 'BatchTicketController@destroyBatch')->name('destroy_batch');
+Route::delete('/batch/{batch_id}/destroy_tickets/{id}', 'BatchTicketController@destroyTickets')->name('destroy_tickets');

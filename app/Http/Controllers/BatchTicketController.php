@@ -24,7 +24,7 @@ class BatchTicketController extends Controller
     public function indexId($id_restau)
     {
         $batchs = BatchTicket::filter($id_restau)->get();
-        return view('batch.index_id', compact( 'batchs', 'id_restau'));
+        return view('batch.index', compact( 'batchs', 'id_restau'));
     }
 
     public function import (Request $request)
@@ -77,28 +77,14 @@ class BatchTicketController extends Controller
             }
         }
         $id_etbalissements = $request->get('restaurant_id');
-        return redirect()->route('tickets_restaurant', $id_etbalissements)->with('success', 'Batch ajouté à la base avec succès!');
+        return redirect()->route('batch_restaurant', $id_etbalissements)->with('success', 'Batch ajouté à la base avec succès!');
     }
 
     public function showBatch ($id) {
         $batch = BatchTicket::findOrFail($id);
         $tickets = Ticket::filter($id)->get();
-        return view('batch.show_id', compact('tickets','batch'));
+        return view('batch_tickets.show_id', compact('tickets','batch'));
 
-    }
-
-    public function editBatch($id)
-    {
-        $batch = BatchTicket::findOrFail($id);
-        return view('tickets_restaurants.edit', compact('batch'));
-    }
-
-    public function updateBatch(Request $request)
-    {
-        $batch = BatchTicket::findOrFail($request->get('id'));
-        $id_etab = $batch->restaurant_id;
-        $batch->update($request->all());
-        return redirect()->route('batch_restaurant', $id_etab)->with('success', 'Batch mis à jour!');
     }
 
     public function destroyBatch ($id, $id_etbalissements) {
