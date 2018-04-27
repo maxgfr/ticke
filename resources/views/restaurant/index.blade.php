@@ -10,19 +10,25 @@
 
             <div class="panel">
                 <div class="panel-heading">
-                    <div class="panel-title">Vos restaurants</div>
+                    <div class="row">
+                        <div class="col-lg-10"><div class="panel-title">Vos restaurants</div></div>
+                        <div class="col-lg-2">
+                            <a class="btn btn-primary btn-outline btn-block" href="{{route('restaurant.create')}}"><i class="fa fa-plus"></i> Ajouter un restaurant</a>
+                        </div>
+                    </div>
+
                 </div>
                 <div class="panel-body">
 
                     @if(session()->has('success'))
                         <div class="alert alert-success">
                             {{ session('success') }}
-                        </div>
+                        </div><br />
                     @endif
                     @if(session()->has('error'))
                         <div class="alert alert-danger">
                             {{ session('error') }}
-                        </div>
+                        </div> <br />
                     @endif
 
                     <div class="table-primary">
