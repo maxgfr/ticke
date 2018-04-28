@@ -69,8 +69,13 @@ class RestaurantController extends Controller
     public function update(Request $req)
     {
         $data = Restaurant::findOrFail($req->id);
-        $data->update($request->all());
-        return response()->json($data);
+        $data->nom = $req->nom;
+        $data->adr = $req->adr;
+        $data->ville = $req->ville;
+        $data->cp = $req->cp;
+        $data->mobile = $req->mobile;
+        $data->save();
+        return response()->json($req);
     }
 
     /**

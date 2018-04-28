@@ -38,11 +38,17 @@
     </button>
 
     <ul class="px-nav-content">
-      <li class="px-nav-item active">
-        <a href="{{route('restaurant.index')}}"><i class="px-nav-icon ion-android-restaurant"></i><span class="px-nav-label">Restaurant</span></a>
+        <li class="px-nav-item">
+          <a href="{{route('home')}}"><i class="px-nav-icon fa fa-th"></i><span class="px-nav-label"> Dashboard</span></a>
+        </li>
+      <li class="px-nav-item">
+        <a href="{{route('restaurant.index')}}"><i class="px-nav-icon fa fa-utensils"></i><span class="px-nav-label"> Restaurants</span></a>
       </li>
       <li class="px-nav-item">
-        <a href="{{route('batch_restaurant', ['restaurant_id' => 0])}}"><i class="px-nav-icon ion-magnet"></i><span class="px-nav-label">Tickets</span></a>
+        <a href="{{route('batch_restaurant')}}"><i class="px-nav-icon fa fa-ticket-alt"></i><span class="px-nav-label"> Tickets</span></a>
+      </li>
+      <li class="px-nav-item">
+        <a href="{{route('home')}}"><i class="px-nav-icon fa fa-money-bill-alt"></i><span class="px-nav-label"> Abonnement</span></a>
       </li>
     </ul>
   </nav>
