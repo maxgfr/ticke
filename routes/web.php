@@ -62,9 +62,14 @@ Route::post('register', [
     'uses' => 'Auth\RegisterController@register'
 ]);
 
-/** AUTHENTIFIER */
+/* AUTHENTIFIER */
 Route::get('/home', 'HomeController@index')->name('home');
-Route::resource('restaurant', 'RestaurantController');
+
+Route::get('/restaurant', 'RestaurantController@index')->name('restaurant.index');
+Route::post('/restaurant/store', 'RestaurantController@store')->name('restaurant.store');
+Route::post('/restaurant/update', 'RestaurantController@update')->name('restaurant.update');
+Route::delete('/restaurant/destroy', 'RestaurantController@destroy')->name('restaurant.destroy');
+
 Route::get('/restaurant/{restaurant_id}/tickets', 'BatchTicketController@indexId')->name('batch_restaurant');
 Route::post('/upload_tickets', 'BatchTicketController@import')->name('upload_tickets');
 Route::get('/batch/{id}', 'BatchTicketController@showBatch')->name('show_batch');

@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Validator;
+use Response;
+use Auth;
 use App\Restaurant;
+use Illuminate\Support\Facades\Input;
 
 class RestaurantController extends Controller
 {
@@ -24,69 +28,49 @@ class RestaurantController extends Controller
      */
     public function index()
     {
-        $restaurant = Restaurant::get();
-        return view('restaurant.index', compact('restaurant'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        $restaurant = new Restaurant();
-        return view('Restaurant.create', compact('restaurant'));
+        $restaurants = Restaurant::get();
+        return view('connected.restaurant', compact('restaurants'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\RestaurantRequest  $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(RestaurantRequest $request)
+    public function store(Request $request)
     {
-        $restaurant = Restaurant::create($request->all());
-        return redirect()->route('restaurant.index')->with('success', 'Restaurant ajouté avec succes!');
+        $rules = array(
+            'nom' => 'required',
+            'adr' => 'required',
+            'cp' => 'required|digits:5',
+            'ville' => 'required',
+            'mobile' => 'required|numeric',
+        );
+        $validator = Validator::make(Input::all(), $rules);
+        if ($validator->fails()) {
+            return Response::json(array(
+                    'errors' => $validator->getMessageBag()->toArray(),
+            ));
+        } else {
+            $data = Restaurant::create(array_merge($request->all(), ['responsable' => Auth::user()->id]));
+            return response()->json($data);
+        }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        $restaurant = Restaurant::findOrFail($id);
-        return view('restaurant.show', compact('restaurant'));
-    }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    * Update the specified resource in storage.
+    *
+    * @param  \Illuminate\Http\Request  $request
+    * @param  $id
+    * @return \Illuminate\Http\Response
+    */
+    public function update(Request $req)
     {
-        $restaurant = Restaurant::findOrFail($id);
-        return view('restaurant.edit', compact('restaurant'));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\RestaurantRequest  $request
-     * @param  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(RestaurantRequest $request, $id)
-    {
-        $instance = Restaurant::findOrFail($id);
-        $instance->update($request->all());
-        return redirect()->route('restaurant.show', $id)->with('success', 'Restaurant mise à jour!');
+        $data = Restaurant::findOrFail($req->id);
+        $data->update($request->all());
+        return response()->json($data);
     }
 
     /**
@@ -95,10 +79,10 @@ class RestaurantController extends Controller
      * @param  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        $restaurant = Restaurant::findOrFail($id);
-        $restaurant->delete();
-        return redirect()->route('restaurant.index')->with('error', 'Restaurant supprimé...');
-    }
+     public function destroy(Request $req)
+     {
+         $restaurant = Restaurant::findOrFail($req->id);
+         $restaurant->delete();
+         return response()->json();
+     }
 }
