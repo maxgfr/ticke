@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 
-  <title>Ticki</title>
+  <title>Tickit</title>
 
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -22,7 +22,7 @@
   <link href="{{ URL::asset('css/widgets.min.css') }}" rel="stylesheet" type="text/css">
 
   <!-- Theme -->
-  <link href="{{ URL::asset('css/themes/clean.min.css') }}" rel="stylesheet" type="text/css">
+  <link href="{{ URL::asset('css/themes/default.min.css') }}" rel="stylesheet" type="text/css">
 
   <!-- Pace.js -->
   <script src="{{ URL::asset('pace/pace.min.js') }}"></script>
@@ -82,7 +82,7 @@
 
   <!-- Footer -->
   <footer class="px-footer px-footer-bottom">
-    Copyright © 2018 Ticki. All rights reserved.
+    Copyright © 2018 Tickit. All rights reserved.
   </footer>
 
   <!-- ==============================================================================

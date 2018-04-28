@@ -18,7 +18,7 @@
   <link href="assets/css/widgets.min.css" rel="stylesheet" type="text/css">
 
   <!-- Theme -->
-  <link href="assets/css/themes/clean.min.css" rel="stylesheet" type="text/css">
+  <link href="assets/css/themes/default.min.css" rel="stylesheet" type="text/css">
 
   <!-- Landing page CSS -->
   <link href="assets/css/landing.css" rel="stylesheet" type="text/css">

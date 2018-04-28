@@ -64,6 +64,7 @@
                 </div>
             </div>
         </div>
+
     </div>
 
     <div id="create" class="modal fade" role="dialog">
@@ -207,5 +208,7 @@
                 </div>
             </div>
         </div>
+
+    </div>
 
 @endsection
