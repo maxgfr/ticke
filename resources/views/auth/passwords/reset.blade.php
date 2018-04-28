@@ -15,15 +15,15 @@
 
 
   <!-- Core stylesheets -->
-  <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
-  <link href="css/pixeladmin.min.css" rel="stylesheet" type="text/css">
-  <link href="css/widgets.min.css" rel="stylesheet" type="text/css">
+  <link href="{{ URL::asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
+  <link href="{{ URL::asset('assets/css/pixeladmin.min.css') }}" rel="stylesheet" type="text/css">
+  <link href="{{ URL::asset('assets/css/widgets.min.css') }}" rel="stylesheet" type="text/css">
 
   <!-- Theme -->
-  <link href="css/themes/clean.min.css" rel="stylesheet" type="text/css">
+  <link href="{{ URL::asset('assets/css/themes/clean.min.css') }}" rel="stylesheet" type="text/css">
 
   <!-- Pace.js -->
-  <script src="pace/pace.min.js"></script>
+  <script src="{{ URL::asset('pace/pace.min.js') }}"></script>
 
   <!-- Custom styling -->
   <style>
@@ -130,8 +130,9 @@
   <!-- jQuery -->
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/pixeladmin.min.js"></script>
+  <!-- Core scripts -->
+  <script src="{{ URL::asset('assets/js/bootstrap.min.js') }}"></script>
+  <script src="{{ URL::asset('assets/js/pixeladmin.min.js') }}"></script>
 
 </body>
 </html>
