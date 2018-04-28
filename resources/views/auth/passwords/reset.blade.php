@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 
 
-  <title>Ticki - Changement de mot de passe</title>
+  <title>Tickit - Changement de mot de passe</title>
 
   <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin" rel="stylesheet" type="text/css">
   <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css">
@@ -102,10 +102,10 @@
       </fieldset>
 
       <fieldset class="form-group form-group-lg">
-          <input id="password-confirm" placeholder="Ton mot de passe" type="password" class="form-control{{ $errors->has('password_confirmation') ? ' is-invalid' : '' }}" name="password_confirmation" required>
-          @if ($errors->has('password_confirmation'))
+          <input id="password-confirm" placeholder="Ton mot de passe" type="password" class="form-control{{ $errors->has('password_confirmation') ? ' is-invalid' : '' }}" name="password-confirm" required>
+          @if ($errors->has('password-confirm'))
               <span class="invalid-feedback">
-                  <strong>{{ $errors->first('password_confirmation') }}</strong>
+                  <strong>{{ $errors->first('password-confirm') }}</strong>
               </span>
           @endif
       </fieldset>

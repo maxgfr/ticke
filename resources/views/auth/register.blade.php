@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 
-  <title>Ticki - Inscription</title>
+  <title>Tickit - Inscription</title>
 
 
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin" rel="stylesheet" type="text/css">
@@ -94,7 +94,7 @@
               <div class="page-signup-icon text-muted"><i class="ion-ios-person-outline"></i></div>
               <input id="firstname" type="text" class="page-signup-form-control form-control{{ $errors->has('firstname') ? ' is-invalid' : '' }}" name="firstname" value="{{ old('firstname') }}" required autofocus placeholder="Prénom">
               @if ($errors->has('firstname'))
-                  <span class="invalid-feedback">
+                  <span class="text-danger">
                       <strong>{{ $errors->first('firstname') }}</strong>
                   </span>
               @endif
@@ -104,7 +104,7 @@
                 <div class="page-signup-icon text-muted"><i class="ion-ios-person"></i></div>
                 <input id="name" type="text" class="page-signup-form-control form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required placeholder="Nom">
                 @if ($errors->has('name'))
-                    <span class="invalid-feedback">
+                    <span class="text-danger">
                         <strong>{{ $errors->first('name') }}</strong>
                     </span>
                 @endif
@@ -114,7 +114,7 @@
             <div class="page-signup-icon text-muted"><i class="ion-at"></i></div>
             <input id="email" type="email" class="page-signup-form-control form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"  name="email" value="{{ old('email') }}" required placeholder="Email">
             @if ($errors->has('email'))
-                <span class="invalid-feedback">
+                <span class="text-danger">
                     <strong>{{ $errors->first('email') }}</strong>
                 </span>
             @endif
@@ -124,7 +124,7 @@
             <div class="page-signup-icon text-muted"><i class="ion-iphone"></i></div>
             <input id="mobile" type="mobile" class="page-signup-form-control form-control{{ $errors->has('mobile') ? ' is-invalid' : '' }}"  name="mobile" value="{{ old('mobile') }}" required placeholder="Numéro">
             @if ($errors->has('mobile'))
-                <span class="invalid-feedback">
+                <span class="text-danger">
                     <strong>{{ $errors->first('mobile') }}</strong>
                 </span>
             @endif
@@ -135,7 +135,7 @@
             <div class="page-signup-icon text-muted"><i class="ion-asterisk"></i></div>
             <input id="password" type="password" class="page-signup-form-control form-control{{ $errors->has('password') ? ' is-invalid' : '' }}"  name="password" required placeholder="Mot de passe">
             @if ($errors->has('password'))
-                <span class="invalid-feedback">
+                <span class="text-danger">
                     <strong>{{ $errors->first('password') }}</strong>
                 </span>
             @endif
@@ -144,8 +144,13 @@
 
           <fieldset class="page-signup-form-group form-group form-group-lg">
             <div class="page-signup-icon text-muted"><i class="ion-asterisk"></i></div>
-            <input type="password-confirm" name="password_confirmation" required class="page-signup-form-control form-control" placeholder="Confirmation du mot de passe">
+            <input type="password" name="password-confirm" required class="page-signup-form-control form-control" placeholder="Confirmation du mot de passe">
             <small class="text-muted">Minimum 6 caractères</small>
+            @if ($errors->has('password-confirm'))
+                <span class="text-danger">
+                    <strong>{{ $errors->first('password-confirm') }}</strong>
+                </span>
+            @endif
           </fieldset>
 
           <label class="custom-control custom-checkbox">

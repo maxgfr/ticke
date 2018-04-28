@@ -123,7 +123,7 @@ $(document).ready(function() {
             success: function(data) {
                 console.log('Success:', data);
                 if ((data.errors)) {
-                    $('.alert-max-dit').removeClass('hidden');
+                    $('.alert-max-edit').removeClass('hidden');
                     console.log(data.errors);
                     var msg_error = "";
                     if (data.errors.nom) {
@@ -141,7 +141,7 @@ $(document).ready(function() {
                     if (data.errors.mobile) {
                         msg_error += data.errors.mobile;
                     }
-                    $('.error-max').text(msg_error);
+                    $('.error-max-edit').text(msg_error);
                 } else {
                     $('.post' + data.id).replaceWith("<tr class='post" + data.id + "'>"+
                     '<td class="text-center">' + data.nom + '</td>'+

@@ -28,7 +28,7 @@ class RestaurantController extends Controller
      */
     public function index()
     {
-        $restaurants = Restaurant::get();
+        $restaurants = Auth::user()->restaurant()->get();
         return view('connected.restaurant', compact('restaurants'));
     }
 
@@ -68,14 +68,28 @@ class RestaurantController extends Controller
     */
     public function update(Request $req)
     {
-        $data = Restaurant::findOrFail($req->id);
-        $data->nom = $req->nom;
-        $data->adr = $req->adr;
-        $data->ville = $req->ville;
-        $data->cp = $req->cp;
-        $data->mobile = $req->mobile;
-        $data->save();
-        return response()->json($req);
+        $rules = array(
+            'nom' => 'required',
+            'adr' => 'required',
+            'cp' => 'required|digits:5',
+            'ville' => 'required',
+            'mobile' => 'required|numeric',
+        );
+        $validator = Validator::make(Input::all(), $rules);
+        if ($validator->fails()) {
+            return Response::json(array(
+                    'errors' => $validator->getMessageBag()->toArray(),
+            ));
+        } else {
+            $data = Restaurant::findOrFail($req->id);
+            $data->nom = $req->nom;
+            $data->adr = $req->adr;
+            $data->ville = $req->ville;
+            $data->cp = $req->cp;
+            $data->mobile = $req->mobile;
+            $data->save();
+            return response()->json($req);
+        }
     }
 
     /**
