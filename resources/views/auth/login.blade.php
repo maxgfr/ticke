@@ -14,15 +14,15 @@
 
 
   <!-- Core stylesheets -->
-  <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
-  <link href="css/pixeladmin.min.css" rel="stylesheet" type="text/css">
-  <link href="css/widgets.min.css" rel="stylesheet" type="text/css">
+  <link href="{{ URL::asset('css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
+  <link href="{{ URL::asset('css/pixeladmin.min.css') }}" rel="stylesheet" type="text/css">
+  <link href="{{ URL::asset('css/widgets.min.css') }}" rel="stylesheet" type="text/css">
 
   <!-- Theme -->
-  <link href="css/themes/clean.min.css" rel="stylesheet" type="text/css">
+  <link href="{{ URL::asset('css/themes/clean.min.css') }}" rel="stylesheet" type="text/css">
 
   <!-- Pace.js -->
-  <script src="pace/pace.min.js"></script>
+  <script src="{{ URL::asset('pace/pace.min.js') }}"></script>
 
 
   <!-- Custom styling -->
@@ -184,11 +184,12 @@
   |
   =============================================================================== -->
 
-  <!-- jQuery -->
+  <!-- Load jQuery -->
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/pixeladmin.min.js"></script>
+  <!-- Core scripts -->
+  <script src="{{ URL::asset('js/bootstrap.min.js') }}"></script>
+  <script src="{{ URL::asset('js/pixeladmin.min.js') }}"></script>
 
   <script>
     // -------------------------------------------------------------------------

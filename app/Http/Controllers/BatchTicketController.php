@@ -21,8 +21,9 @@ class BatchTicketController extends Controller
         $this->middleware('auth');
     }
 
-    public function indexId($id_restau)
+    public function index()
     {
+        $id_restau = 0;
         $batchs = BatchTicket::filter($id_restau)->get();
         return view('batch.index', compact( 'batchs', 'id_restau'));
     }

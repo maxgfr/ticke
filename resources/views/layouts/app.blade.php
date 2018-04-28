@@ -69,9 +69,9 @@
             {{ Auth::user()->firstname }} {{ Auth::user()->name }}
           </a>
           <ul class="dropdown-menu">
-            <li><a href="#">Profil</a></li>
+            <li><a href="{{route("user_profile")}}"><i class="fa fa-user"></i> Profil</a></li>
             <li class="divider"></li>
-            <li><a href="{{route("logout")}}">Déconnexion</a></li>
+            <li><a href="{{route("logout")}}"><i class="fa fa-sign-out-alt"></i> Déconnexion</a></li>
           </ul>
         </li>
       </ul>

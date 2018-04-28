@@ -65,12 +65,15 @@ Route::post('register', [
 /* AUTHENTIFIER */
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/user', 'UserController@index')->name('user_profile');
+Route::post('/user', 'UserController@update')->name('user_update');
+
 Route::get('/restaurant', 'RestaurantController@index')->name('restaurant.index');
 Route::post('/restaurant/store', 'RestaurantController@store')->name('restaurant.store');
 Route::post('/restaurant/update', 'RestaurantController@update')->name('restaurant.update');
 Route::delete('/restaurant/destroy', 'RestaurantController@destroy')->name('restaurant.destroy');
 
-Route::get('/restaurant/{restaurant_id}/tickets', 'BatchTicketController@indexId')->name('batch_restaurant');
+Route::get('/restaurant/tickets', 'BatchTicketController@index')->name('batch_restaurant');
 Route::post('/upload_tickets', 'BatchTicketController@import')->name('upload_tickets');
 Route::get('/batch/{id}', 'BatchTicketController@showBatch')->name('show_batch');
 Route::delete('/etablissements/{etablissements_id}/tickets_restaurant/{id}', 'BatchTicketController@destroyBatch')->name('destroy_batch');
