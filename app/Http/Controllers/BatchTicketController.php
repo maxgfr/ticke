@@ -92,17 +92,17 @@ class BatchTicketController extends Controller
         return redirect()->route('batch_restaurant', $id_etbalissements)->with('success', 'Batch ajouté à la base avec succès!');
     }
 
-    public function destroyBatch ($id, $id_etbalissements) {
+    public function destroyBatch ($id_restau, $id_batch) {
         /* Security */
-        $restau = Restaurant::findOrFail($id_etbalissements);
+        $restau = Restaurant::findOrFail($id_restau);
         $id_user = Auth::user()->id;
         if ($id_user != $restau->responsable) {
             abort(404);
         }
         /* End security */
-        $bt = BatchTicket::findOrFail($id);
+        $bt = BatchTicket::findOrFail($id_batch);
         $bt->delete();
-        return redirect()->route('batch_restaurant', $id_etbalissements)->with('error', 'Batch supprimé...');
+        return redirect()->route('batch_restaurant', ['id' => $id_restau])->with('error', 'Batch supprimé...');
     }
 
     public function showBatch ($id_restau, $id_batch) {
@@ -122,6 +122,6 @@ class BatchTicketController extends Controller
     public function destroyTickets ($id_restau, $id_batch, $id_ticket) {
         $tk = Ticket::findOrFail($id_ticket);
         $tk->delete();
-        return redirect()->route('show_batch', $batch_id)->with('error', 'Ticket restaurant supprimé...');
+        return redirect()->route('show_batch', ['id_batch' => $id_batch, 'id_restau' => $id_restau])->with('error', 'Ticket restaurant supprimé...');
     }
 }

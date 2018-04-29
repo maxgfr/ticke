@@ -106,7 +106,7 @@
                                     {{ $tk->millesime }}
                                 </td>
                                 <td class="text-center">
-                                    {!! Form::model($tk, ['method' => 'DELETE', 'route' => ['destroy_tickets', ['id_batch' => $btch->id, 'id_restau' => $restau->id, 'id_ticket' => $tk->id]], 'style' => 'display:inline;']) !!}
+                                    {!! Form::model($tk, ['method' => 'DELETE', 'route' => ['destroy_tickets', $restau->id, $batch->id , $tk->id], 'style' => 'display:inline;']) !!}
                                     {!! csrf_field() !!}
                                     {!! Form::button('<i class="fa fa-trash-alt" aria-hidden="true"></i> Supprimer', ['class' => 'btn btn-danger btn-sm', 'type' => 'submit']) !!}
                                     {!! Form::close() !!}

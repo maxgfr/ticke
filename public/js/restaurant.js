@@ -49,12 +49,14 @@ $(document).ready(function() {
                 } else {
                     $('#datatables').append("<tr class='post" + data.id + "'>"+
                     '<td class="text-center">' + data.nom + '</td>'+
-                    '<td class="text-center">' + data.adr + '</td>'+
-                    '<td class="text-center">' + data.ville + '</td>'+
+                    '<td class="text-center">' + data.adr + data.ville +'</td>'+
                     '<td class="text-center">' + data.mobile + '</td>'+
                     "<td class='text-center'>"+
-                        "<button class='edit-modal btn btn-warning btn-sm' data-id='" + data.id + "' data-nom='" + data.nom + "' data-adr='" + data.adr + "' data-ville='" + data.ville + "' data-cp='" + data.cp + "' data-mobile='" + data.mobile +  "'><span class='glyphicon glyphicon-pencil'></span></button> "+
-                        "<button class='delete-modal btn btn-danger btn-sm' data-id='" + data.id + "' data-nom='" + data.nom + "' data-adr='" + data.adr + "' data-ville='" + data.ville + "' data-cp='" + data.cp + "' data-mobile='" + data.mobile +  "'><span class='glyphicon glyphicon-trash'></span></button>"+
+                        "<div class='row'>"+
+                            "<div class='col-lg-4'><a class='btn btn-primary btn-sm' href='/restaurant/"+data.id+"/tickets'><span class='glyphicon glyphicon-menu-right'></span> Tickets</a></div>"+
+                            "<div class='col-lg-4'><button class='edit-modal btn btn-warning btn-sm' data-id='" + data.id + "' data-nom='" + data.nom + "' data-adr='" + data.adr + "' data-ville='" + data.ville + "' data-cp='" + data.cp + "' data-mobile='" + data.mobile +  "'><span class='glyphicon glyphicon-pencil'></span> Editer</button></div>"+
+                            "<div class='col-lg-4'><button class='delete-modal btn btn-danger btn-sm' data-id='" + data.id + "' data-nom='" + data.nom + "' data-adr='" + data.adr + "' data-ville='" + data.ville + "' data-cp='" + data.cp + "' data-mobile='" + data.mobile +  "'><span class='glyphicon glyphicon-trash'></span> Supprimer</button></div>"+
+                        "</div>"+
                     "</td>"+"</tr>");
                     $('#nom').val('');
                     $('#adr').val('');
@@ -144,12 +146,14 @@ $(document).ready(function() {
                 } else {
                     $('.post' + data.id).replaceWith("<tr class='post" + data.id + "'>"+
                     '<td class="text-center">' + data.nom + '</td>'+
-                    '<td class="text-center">' + data.adr + '</td>'+
-                    '<td class="text-center">' + data.ville + '</td>'+
+                    '<td class="text-center">' + data.adr + data.ville +'</td>'+
                     '<td class="text-center">' + data.mobile + '</td>'+
                     "<td class='text-center'>"+
-                        "<button class='edit-modal btn btn-warning btn-sm' data-id='" + data.id + "' data-nom='" + data.nom + "' data-adr='" + data.adr + "' data-ville='" + data.ville + "' data-cp='" + data.cp + "' data-mobile='" + data.mobile +  "'><span class='glyphicon glyphicon-pencil'></span></button> "+
-                        "<button class='delete-modal btn btn-danger btn-sm' data-id='" + data.id + "' data-nom='" + data.nom + "' data-adr='" + data.adr + "' data-ville='" + data.ville + "' data-cp='" + data.cp + "' data-mobile='" + data.mobile +  "'><span class='glyphicon glyphicon-trash'></span></button>"+
+                        "<div class='row'>"+
+                            "<div class='col-lg-4'><a class='btn btn-primary btn-sm' href='/restaurant/"+data.id+"/tickets'><span class='glyphicon glyphicon-menu-right'></span> Tickets</a></div>"+
+                            "<div class='col-lg-4'><button class='edit-modal btn btn-warning btn-sm' data-id='" + data.id + "' data-nom='" + data.nom + "' data-adr='" + data.adr + "' data-ville='" + data.ville + "' data-cp='" + data.cp + "' data-mobile='" + data.mobile +  "'><span class='glyphicon glyphicon-pencil'></span> Editer</button></div>"+
+                            "<div class='col-lg-4'><button class='delete-modal btn btn-danger btn-sm' data-id='" + data.id + "' data-nom='" + data.nom + "' data-adr='" + data.adr + "' data-ville='" + data.ville + "' data-cp='" + data.cp + "' data-mobile='" + data.mobile +  "'><span class='glyphicon glyphicon-trash'></span> Supprimer</button></div>"+
+                        "</div>"+
                     "</td>"+"</tr>");
                     $('#nom_edit').val('');
                     $('#adr_edit').val('');

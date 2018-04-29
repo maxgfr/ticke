@@ -89,7 +89,7 @@
                                                 <button class="btn btn btn-warning btn-sm"><i class="fa fa-edit"></i> Editer</button>
                                             </div>
                                             <div class="col-lg-4">
-                                                {!! Form::model($btch, ['method' => 'DELETE', 'route' => ['destroy_batch', ['id_batch' => $btch->id, 'id_restau' => $restau->id]], 'style' => 'display:inline;']) !!}
+                                                {!! Form::model($btch, ['method' => 'DELETE', 'route' => ['destroy_batch', $restau->id, $btch->id ], 'style' => 'display:inline;']) !!}
                                                 {!! csrf_field() !!}
 
                                                 {!! Form::button('<i class="fa fa-trash-alt" aria-hidden="true"></i> Supprimer', ['class' => 'btn btn-danger btn-sm', 'type' => 'submit']) !!}
