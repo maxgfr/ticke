@@ -29,9 +29,14 @@ class BatchTicket extends Model
         'date', 'envoye', 'paye', 'restaurant_id'
     ];
 
-    public function tickets()
+    public function ticket()
     {
-        return $this->hasMany(Tickets::class);
+        return $this->hasMany(Ticket::class, 'batchticket_id');
+    }
+
+    public function restaurant()
+    {
+        return $this->belongsTo(Restaurant::class);
     }
 
     public function scopeFilter ($query, $id) {

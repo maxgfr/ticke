@@ -42,10 +42,7 @@
           <a href="{{route('home')}}"><i class="px-nav-icon fa fa-th"></i><span class="px-nav-label"> Dashboard</span></a>
         </li>
       <li class="px-nav-item">
-        <a href="{{route('restaurant.index')}}"><i class="px-nav-icon fa fa-utensils"></i><span class="px-nav-label"> Restaurants</span></a>
-      </li>
-      <li class="px-nav-item">
-        <a href="{{route('batch_restaurant')}}"><i class="px-nav-icon fa fa-ticket-alt"></i><span class="px-nav-label"> Tickets</span></a>
+        <a href="{{route('restaurant.index')}}"><i class="px-nav-icon fa fa-ticket-alt"></i><span class="px-nav-label"> Tickets</span></a>
       </li>
       <li class="px-nav-item">
         <a href="{{route('home')}}"><i class="px-nav-icon fa fa-money-bill-alt"></i><span class="px-nav-label"> Abonnement</span></a>

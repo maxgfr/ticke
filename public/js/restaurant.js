@@ -4,7 +4,6 @@ $(document).ready(function() {
     var val_to_edit;
 
     $('#datatables').dataTable();
-    $('#datatables_wrapper .table-caption').text('La liste de mes restaurants');
     $('#datatables_wrapper .dataTables_filter input').attr('placeholder', 'Rechercher...');
 
     $(document).on('click','.create-modal', function() {

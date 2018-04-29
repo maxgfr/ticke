@@ -101,6 +101,12 @@ class RestaurantController extends Controller
      public function destroy(Request $req)
      {
          $restaurant = Restaurant::findOrFail($req->id);
+         /* Security */
+         $id_user = Auth::user()->id;
+         if ($id_user != $restaurant->responsable) {
+             abort(404);
+         }
+         /* End security */
          $restaurant->delete();
          return response()->json();
      }

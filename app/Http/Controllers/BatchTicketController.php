@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\BatchTicket;
 use App\Ticket;
+use App\Restaurant;
 use Carbon\Carbon;
+use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
@@ -16,20 +18,23 @@ class BatchTicketController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
+    public function __construct(){
         $this->middleware('auth');
     }
 
-    public function index()
-    {
-        $id_restau = 0;
-        $batchs = BatchTicket::filter($id_restau)->get();
-        return view('batch.index', compact( 'batchs', 'id_restau'));
+    public function index($id){
+        $restau = Restaurant::findOrFail($id);
+        /* Security */
+        $id_user = Auth::user()->id;
+        if ($id_user != $restau->responsable) {
+            abort(404);
+        }
+        /* End security */
+        $batchs = $restau->batch()->get();
+        return view('connected.batch.index', compact( 'batchs', 'restau'));
     }
 
-    public function import (Request $request)
-    {
+    public function import (Request $request){
         //etape 0 valider la requête
         $file = $request->file('file');
         $validator = Validator::make(
@@ -49,9 +54,15 @@ class BatchTicketController extends Controller
         }
         else {
             //etape 1 : créer un batch
-            DB::table('batchtickets')->insertGetId(
+            /*DB::table('batchtickets')->insertGetId(
                 ['date' => Carbon::now(), 'envoye' => false, 'paye' => false, 'restaurant_id' => $request->get('restaurant_id')]
-            );
+            );*/
+            BatchTicket::create([
+                'date' => Carbon::now(),
+                'envoye' => false,
+                'paye' => false,
+                'restaurant_id' => $request->get('restaurant_id'),
+            ]);
             //etape 2 : créer pour chaque ligne un ticket
             $content = file($file);
             foreach ($content as $line) {
@@ -81,21 +92,35 @@ class BatchTicketController extends Controller
         return redirect()->route('batch_restaurant', $id_etbalissements)->with('success', 'Batch ajouté à la base avec succès!');
     }
 
-    public function showBatch ($id) {
-        $batch = BatchTicket::findOrFail($id);
-        $tickets = Ticket::filter($id)->get();
-        return view('batch_tickets.show_id', compact('tickets','batch'));
-
-    }
-
     public function destroyBatch ($id, $id_etbalissements) {
+        /* Security */
+        $restau = Restaurant::findOrFail($id_etbalissements);
+        $id_user = Auth::user()->id;
+        if ($id_user != $restau->responsable) {
+            abort(404);
+        }
+        /* End security */
         $bt = BatchTicket::findOrFail($id);
         $bt->delete();
         return redirect()->route('batch_restaurant', $id_etbalissements)->with('error', 'Batch supprimé...');
     }
 
-    public function destroyTickets ($id, $batch_id) {
-        $tk = Ticket::findOrFail($id);
+    public function showBatch ($id_restau, $id_batch) {
+        $restau = Restaurant::findOrFail($id_restau);
+        /* Security */
+        $id_user = Auth::user()->id;
+        if ($id_user != $restau->responsable) {
+            abort(404);
+        }
+        /* End security */
+        $batch = BatchTicket::findOrFail($id_batch);
+        $tickets = $batch->ticket()->get();
+        return view('connected.batch.show', compact('tickets','batch', 'restau'));
+
+    }
+
+    public function destroyTickets ($id_restau, $id_batch, $id_ticket) {
+        $tk = Ticket::findOrFail($id_ticket);
         $tk->delete();
         return redirect()->route('show_batch', $batch_id)->with('error', 'Ticket restaurant supprimé...');
     }

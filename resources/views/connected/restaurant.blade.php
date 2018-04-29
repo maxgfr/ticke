@@ -4,7 +4,7 @@
 
     <div class="px-content">
         <div class="page-header">
-            <h1><span class="text-muted font-weight-light"><i class="fa fa-utensils"></i> Gestion des restaurants</span></h1>
+            <h1><span class="text-muted font-weight-light"><i class="fa fa-ticket-alt"></i></span> Gestion des tickets restaurant</h1>
         </div>
 
         <div class="panel">
@@ -36,8 +36,7 @@
                         <thead>
                             <tr>
                                 <th class="text-center">Nom</th>
-                                <th class="text-center">Adresse</th>
-                                <th class="text-center">Ville</th>
+                                <th class="text-center">Localisation</th>
                                 <th class="text-center">Numéro</th>
                                 <th class="text-center">Actions</th>
                             </tr>
@@ -46,16 +45,26 @@
                             @foreach($restaurants as $resto)
                                 <tr class="post{{$resto->id}}">
                                     <td class="text-center">{{$resto->nom}}</td>
-                                    <td class="text-center">{{$resto->adr}}</td>
-                                    <td class="text-center">{{$resto->ville}}</td>
+                                    <td class="text-center">{{$resto->adr}}, {{$resto->ville}}</td>
                                     <td class="text-center">{{$resto->mobile}}</td>
                                     <td class="text-center">
-                                        <button class="btn btn-warning btn-sm edit-modal" data-id="{{$resto->id}}" data-nom="{{$resto->nom}}" data-adr="{{$resto->adr}}" data-ville="{{$resto->ville}}" data-cp="{{$resto->cp}}"  data-mobile="{{$resto->mobile}}" >
-                                            <span class="glyphicon glyphicon-pencil"></span>
-                                        </button>
-                                        <button class="btn btn-danger btn-sm delete-modal" data-id="{{$resto->id}}">
-                                            <span class="glyphicon glyphicon-trash"></span>
-                                        </button>
+                                        <div class="row">
+                                            <div class="col-lg-4">
+                                                <a class="btn btn-primary btn-sm" href="{{route('batch_restaurant', ['id' => $resto->id])}}">
+                                                    <span class="glyphicon glyphicon-menu-right"></span> Tickets
+                                                </a>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <button class="btn btn-warning btn-sm edit-modal" data-id="{{$resto->id}}" data-nom="{{$resto->nom}}" data-adr="{{$resto->adr}}" data-ville="{{$resto->ville}}" data-cp="{{$resto->cp}}"  data-mobile="{{$resto->mobile}}" >
+                                                    <span class="glyphicon glyphicon-pencil"></span> Editer
+                                                </button>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <button class="btn btn-danger btn-sm delete-modal" data-id="{{$resto->id}}">
+                                                    <span class="glyphicon glyphicon-trash"></span> Supprimer
+                                                </button>
+                                            </div>
+                                        </div>
                                     </td>
                                 </tr>
                             @endforeach

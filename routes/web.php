@@ -73,8 +73,8 @@ Route::post('/restaurant/store', 'RestaurantController@store')->name('restaurant
 Route::post('/restaurant/update', 'RestaurantController@update')->name('restaurant.update');
 Route::delete('/restaurant/destroy', 'RestaurantController@destroy')->name('restaurant.destroy');
 
-Route::get('/restaurant/tickets', 'BatchTicketController@index')->name('batch_restaurant');
+Route::get('/restaurant/{id}/tickets', 'BatchTicketController@index')->name('batch_restaurant');
 Route::post('/upload_tickets', 'BatchTicketController@import')->name('upload_tickets');
-Route::get('/batch/{id}', 'BatchTicketController@showBatch')->name('show_batch');
-Route::delete('/etablissements/{etablissements_id}/tickets_restaurant/{id}', 'BatchTicketController@destroyBatch')->name('destroy_batch');
-Route::delete('/batch/{batch_id}/destroy_tickets/{id}', 'BatchTicketController@destroyTickets')->name('destroy_tickets');
+Route::get('/restaurant/{id_restau}/tickets/{id_batch}', 'BatchTicketController@showBatch')->name('show_batch');
+Route::delete('/restaurant/{id_restau}/tickets/{id_batch}', 'BatchTicketController@destroyBatch')->name('destroy_batch');
+Route::delete('/restaurant/{id_restau}/tickets/{id_batch}/id/{id_ticket}', 'BatchTicketController@destroyTickets')->name('destroy_tickets');
