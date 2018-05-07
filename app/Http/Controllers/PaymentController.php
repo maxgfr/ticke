@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
+use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Session;
 
 class PaymentController extends Controller
 {
@@ -10,7 +13,7 @@ class PaymentController extends Controller
         if (Auth::user() == null) {
             abort(404);
         }
-        return view('backoffice.paiement');
+        return view('connected.payment');
     }
 
     public function payment(Request $request){
@@ -18,27 +21,30 @@ class PaymentController extends Controller
         $to = auth()->user()->email;
         \Stripe\Stripe::setApiKey ('sk_test_fTwYzeKr9T58Wv14EX7n7Ea8');
         try {
-            $customer = \Stripe\Customer::create(array(
-                        "email"  => $to,
-                        "source" => $token,
-                    ));
-            $charge = \Stripe\Charge::create ( array (
-                "amount" => 55000,
-                "currency" => "eur",
-                "customer" => $customer->id,
-                "description" => "Your Orientation - Stage 2018"
-            ) );
-            $role = Role::where('name', 'stage_paye')->first();
+            $product = \Stripe\Product::create([
+                'name' => 'Tickit',
+                'type' => 'service',
+            ]);
+            $plan = \Stripe\Plan::create([
+              'product' => $product->id,
+              'nickname' => 'Monthly Payment for Tickit',
+              'interval' => 'month',
+              'currency' => 'eur',
+              'amount' => 500,
+            ]);
+            $customer = \Stripe\Customer::create([
+                "email"  => $to,
+                "source" => $token,
+            ]);
+            $subscription = \Stripe\Subscription::create([
+                'customer' => $customer->id,
+                'items' => [['plan' => $plan->id]],
+            ]);
+            $role = Role::where('name', 'basic')->first();
             if ($role == null) {
-                $role = Role::create(['name' => 'stage_paye']);
+                $role = Role::create(['name' => 'basic']);
             }
-            Auth::user()->assignRole('stage_paye');
-            $for_yo = "contact@your-orientation.com";
-            Mail::send('mails.mail4', [], function ($message) use($to,$for_yo)
-            {
-                $message->from('no-reply@your-orientation.com', 'Your Orientation');
-                $message->to($to)->subject("Confirmation paiement du stage d'été")->bcc($for_yo);
-            });
+            Auth::user()->assignRole('basic');
             Session::flash('success-message', 'Paiement réalisé avec succès!');
             return redirect()->back();
         } catch ( \Exception $e ) {

@@ -15,22 +15,35 @@
                     </div>
                 </div>
             </div>
-            <div class="panel-body">
+            <div class="panel-body text-center">
 
-                @if(session()->has('success'))
-                    <div class="alert alert-success">
-                        <button type="button" class="close" data-dismiss="alert">×</button>
-                        {{ session('success') }}
-                    </div><br />
-                @endif
-
-                @if(session()->has('error'))
-                    <div class="alert alert-danger">
-                        <button type="button" class="close" data-dismiss="alert">×</button>
-                        {{ session('error') }}
-                    </div> <br />
-                @endif
-
+                @role('basic')
+                    Tu as payé :-)
+                @else
+                    <!-- Stripe -->
+                    <form action="{{route('payment_stripe')}}" method="POST">
+                        {!! csrf_field() !!}
+                      <script
+                        src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                        data-key="pk_test_YxmYk6I6l0tDwGTCl6eVFCTG"
+                        data-amount="500"
+                        data-name="Tickit"
+                        data-description="Souscription mensuelle"
+                        data-locale="auto"
+                        data-label="Payer maintenant"
+                        data-email="{{ auth()->check()?auth()->user()->email: null}}"
+                        data-locale="auto"
+                        data-currency="eur">
+                      </script>
+                    </form>
+                    @if ((Session::has('success-message')))
+                        <div class="alert alert-success col-md-12">{{Session::get('success-message') }}</div>
+                    @endif
+                    @if ((Session::has('fail-message')))
+                        <div class="alert alert-danger col-md-12">{{Session::get('fail-message') }}</div>
+                    @endif
+                @endrole
+                <!-- End stripe -->
 
             </div>
         </div>

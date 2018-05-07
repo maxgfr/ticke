@@ -45,7 +45,7 @@
         <a href="{{route('restaurant.index')}}"><i class="px-nav-icon fa fa-ticket-alt"></i><span class="px-nav-label"> Tickets</span></a>
       </li>
       <li class="px-nav-item">
-        <a href="{{route('home')}}"><i class="px-nav-icon fa fa-money-bill-alt"></i><span class="px-nav-label"> Abonnement</span></a>
+        <a href="{{route('page_payment_stripe')}}"><i class="px-nav-icon fa fa-money-bill-alt"></i><span class="px-nav-label"> Abonnement</span></a>
       </li>
     </ul>
   </nav>

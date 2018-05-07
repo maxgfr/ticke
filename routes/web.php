@@ -78,3 +78,6 @@ Route::post('/upload_tickets', 'BatchTicketController@import')->name('upload_tic
 Route::get('/restaurant/{id_restau}/tickets/{id_batch}', 'BatchTicketController@showBatch')->name('show_batch');
 Route::delete('/restaurant/{id_restau}/tickets/{id_batch}', 'BatchTicketController@destroyBatch')->name('destroy_batch');
 Route::delete('/restaurant/{id_restau}/tickets/{id_batch}/id/{id_ticket}', 'BatchTicketController@destroyTickets')->name('destroy_tickets');
+
+Route::get('/paiement-stage', 'PaymentController@indexPaiement')->name('page_payment_stripe');
+Route::post('/paiement-stage', 'PaymentController@payment')->name('payment_stripe');
