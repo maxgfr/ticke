@@ -44,18 +44,25 @@ docker-compose exec workspace mysql
 
 Y) Problem :
 
-1°
+1° In laradock/
 ```
 docker-compose down
 docker-compose up -d nginx mysql phpmyadmin redis workspace
 ```
 
-2°
-```
-docker-compose build
-```
-3°
 ```
 docker-compose exec workspace bash
+php artisan cache:clear
+php artisan config:cache
 php artisan migrate
+```
+
+2° In app directory :
+```
+php artisan cache:clear
+php artisan config:cache
+```
+
+```
+chmod -R 777 storage bootstrap/cache
 ```
