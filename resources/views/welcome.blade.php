@@ -13,15 +13,15 @@
   <link href="http://cdn.linearicons.com/free/1.0.0/icon-font.min.css" rel="stylesheet" type="text/css">
 
   <!-- Core stylesheets -->
-  <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-  <link href="assets/css/pixeladmin.min.css" rel="stylesheet" type="text/css">
-  <link href="assets/css/widgets.min.css" rel="stylesheet" type="text/css">
+  <link href="{{ URL::asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
+  <link href="{{ URL::asset('assets/css/pixeladmin.min.css') }}" rel="stylesheet" type="text/css">
+  <link href="{{ URL::asset('assets/css/widgets.min.css') }}" rel="stylesheet" type="text/css">
 
   <!-- Theme -->
-  <link href="assets/css/themes/default.min.css" rel="stylesheet" type="text/css">
+  <link href="{{ URL::asset('assets/css/themes/default.min.css') }}" rel="stylesheet" type="text/css">
 
   <!-- Landing page CSS -->
-  <link href="assets/css/landing.css" rel="stylesheet" type="text/css">
+  <link href="{{ URL::asset('assets/css/landing.css') }}" rel="stylesheet" type="text/css">
 </head>
 <body>
 
@@ -405,15 +405,15 @@
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
   <!-- Core scripts -->
-  <script src="assets/js/bootstrap.min.js"></script>
-  <script src="assets/js/pixeladmin.min.js"></script>
+  <script src="{{ URL::asset('assets/js/bootstrap.min.js') }}"></script>
+  <script src="{{ URL::asset('assets/js/pixeladmin.min.js') }}"></script>
 
   <!-- Landing page dependencies -->
-  <script src="assets/js/jquery.waypoints.min.js"></script>
-  <script src="assets/js/jquery.scrollTo.min.js"></script>
-  <script src="assets/js/lazysizes.min.js"></script>
+  <script src="{{ URL::asset('assets/js/jquery.waypoints.min.js') }}"></script>
+  <script src="{{ URL::asset('assets/js/jquery.scrollTo.min.js') }}"></script>
+  <script src="{{ URL::asset('assets/js/lazysizes.min.js') }}"></script>
 
   <!-- Landing page JS -->
-  <script src="assets/js/landing.js"></script>
+  <script src="{{ URL::asset('assets/js/landing.js') }}"></script>
 </body>
 </html>
