@@ -27,11 +27,16 @@ class Ticket extends Model
      */
 
     protected $fillable = [
-        'value'
+        'value', 'batch_id', 'repartition_id'
     ];
 
     public function batch()
     {
         return $this->belongsTo(Batch::class);
+    }
+
+    public function repartition()
+    {
+        return $this->belongsTo(Repartition::class);
     }
 }

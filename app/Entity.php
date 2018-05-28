@@ -36,6 +36,6 @@ class Entity extends Model
 
     public function pattern()
     {
-        return $this->hasMany(PatternEntity::class, 'entity_id');
+        return $this->hasMany(Pattern::class, 'entity_id');
     }
 }

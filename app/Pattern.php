@@ -26,8 +26,19 @@ class Pattern extends Model
      * @var array
      */
     protected $fillable = [
-        'total_number', 'nom'
+        'total_number', 'nom', 'entity_id'
     ];
+
+    public function enitity()
+    {
+        return $this->belongsTo(Entity::class);
+    }
+
+
+    public function repartition()
+    {
+        return $this->hasMany(Repartition::class);
+    }
 
     public function scopeNom ($query, $nom) {
         return $query->where('nom', 'LIKE', $nom);

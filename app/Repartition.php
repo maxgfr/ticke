@@ -26,11 +26,16 @@ class Repartition extends Model
      * @var array
      */
     protected $fillable = [
-        'total'
+        'total', 'pattern_id'
     ];
 
     public function enitity()
     {
         return $this->belongsTo(Pattern::class);
+    }
+
+    public function ticket()
+    {
+        return $this->hasMany(Ticket::class);
     }
 }

@@ -31,14 +31,14 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function entities()
+    public function entity()
     {
         return $this->hasMany(Entity::class, 'users_id'); // pcq c'est pas user_id
     }
 
-    public function pattern_user()
+    public function pattern()
     {
-        return $this->hasMany(PatternUser::class, 'users_id'); // pcq c'est pas user_id
+        return $this->hasMany(Pattern::class, 'users_id'); // pcq c'est pas user_id
     }
 
     public function generateToken()

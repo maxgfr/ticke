@@ -26,7 +26,7 @@ class Batch extends Model
      * @var array
      */
     protected $fillable = [
-        'date'
+        'date', 'pattern_id'
     ];
 
     public function ticket()
