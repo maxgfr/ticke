@@ -4,14 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class BatchTicket extends Model
+class BatchPattern extends Model
 {
     /**
      * The database table used by the model.
      *
      * @var string
      */
-    protected $table = 'batchtickets';
+    protected $table = 'batch';
 
     /**
      * The database primary key value.
@@ -26,21 +26,21 @@ class BatchTicket extends Model
      * @var array
      */
     protected $fillable = [
-        'date', 'envoye', 'paye', 'restaurant_id'
+        'date'
     ];
 
     public function ticket()
     {
-        return $this->hasMany(Ticket::class, 'batchticket_id');
+        return $this->hasMany(TicketEntity::class, 'batch_pattern_id');
     }
 
-    public function restaurant()
+    public function pattern()
     {
-        return $this->belongsTo(Restaurant::class);
+        return $this->belongsTo(Pattern::class);
     }
 
     public function scopeFilter ($query, $id) {
-        return $query->where('restaurant_id', $id);
+        return $query->where('pattern_id', $id);
     }
 
     public function scopeLast ($query) {

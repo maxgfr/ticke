@@ -4,14 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Ticket extends Model
+class RepartitionEntity extends Model
 {
     /**
      * The database table used by the model.
      *
      * @var string
      */
-    protected $table = 'ticket';
+    protected $table = 'repartition_entity';
 
     /**
      * The database primary key value.
@@ -25,13 +25,13 @@ class Ticket extends Model
      *
      * @var array
      */
-
     protected $fillable = [
-        'value'
+        'total'
     ];
 
-    public function batch()
+
+    public function entity()
     {
-        return $this->belongsTo(Batch::class);
+        return $this->belongsTo(PatternEntity::class);
     }
 }

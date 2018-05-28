@@ -4,14 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Restaurant extends Model
+class Entity extends Model
 {
     /**
     * The database table used by the model.
     *
     * @var string
     */
-    protected $table = 'restaurants';
+    protected $table = 'entity';
 
     /**
      * The database primary key value.
@@ -26,7 +26,7 @@ class Restaurant extends Model
      * @var array
      */
     protected $fillable = [
-        'nom', 'adr', 'cp', 'ville', 'mobile', 'responsable'
+        'nom', 'adr', 'users_id'
     ];
 
     public function user()
@@ -34,8 +34,8 @@ class Restaurant extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function batch()
+    public function pattern()
     {
-        return $this->hasMany(BatchTicket::class);
+        return $this->hasMany(PatternEntity::class, 'entity_id');
     }
 }

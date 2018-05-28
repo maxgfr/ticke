@@ -4,14 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Ticket extends Model
+class PatternEntity extends Model
 {
     /**
      * The database table used by the model.
      *
      * @var string
      */
-    protected $table = 'ticket';
+    protected $table = 'pattern_entity';
 
     /**
      * The database primary key value.
@@ -25,13 +25,16 @@ class Ticket extends Model
      *
      * @var array
      */
-
     protected $fillable = [
-        'value'
+        'total_number', 'nom'
     ];
 
-    public function batch()
+    public function enitity()
     {
-        return $this->belongsTo(Batch::class);
+        return $this->belongsTo(Entity::class);
+    }
+
+    public function scopeNom ($query, $nom) {
+        return $query->where('nom', 'LIKE', $nom);
     }
 }

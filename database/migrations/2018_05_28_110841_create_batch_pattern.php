@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBatchticket extends Migration
+class CreateBatch extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,11 @@ class CreateBatchticket extends Migration
      */
     public function up()
     {
-        Schema::create('batchtickets', function (Blueprint $table) {
+        Schema::create('batch', function (Blueprint $table) {
             $table->increments('id');
             $table->date('date');
-            $table->boolean('envoye')->default(false);
-            $table->boolean('paye')->default(false);
-            $table->integer('restaurant_id')->unsigned()->index();
-            $table->foreign('restaurant_id')->references('id')->on('restaurants')->onDelete('cascade');
+            $table->integer('pattern_id')->unsigned()->index();
+            $table->foreign('pattern_id')->references('id')->on('pattern')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -31,6 +29,6 @@ class CreateBatchticket extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('batchtickets');
+        Schema::dropIfExists('batch');
     }
 }

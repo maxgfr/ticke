@@ -31,9 +31,14 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function restaurant()
+    public function entities()
     {
-        return $this->hasMany(Restaurant::class, 'responsable'); // pcq c'est pas user_id
+        return $this->hasMany(Entity::class, 'users_id'); // pcq c'est pas user_id
+    }
+
+    public function pattern_user()
+    {
+        return $this->hasMany(PatternUser::class, 'users_id'); // pcq c'est pas user_id
     }
 
     public function generateToken()
