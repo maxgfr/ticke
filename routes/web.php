@@ -68,16 +68,16 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/user', 'UserController@index')->name('user_profile');
 Route::post('/user', 'UserController@update')->name('user_update');
 
-Route::get('/restaurant', 'RestaurantController@index')->name('restaurant.index');
-Route::post('/restaurant/store', 'RestaurantController@store')->name('restaurant.store');
-Route::post('/restaurant/update', 'RestaurantController@update')->name('restaurant.update');
-Route::delete('/restaurant/destroy', 'RestaurantController@destroy')->name('restaurant.destroy');
+Route::get('/entity', 'RestaurantController@index')->name('entity.index');
+Route::post('/entity/store', 'RestaurantController@store')->name('entity.store');
+Route::post('/entity/update', 'RestaurantController@update')->name('entity.update');
+Route::delete('/entity/destroy', 'RestaurantController@destroy')->name('entity.destroy');
 
-Route::get('/restaurant/{id}/tickets', 'BatchTicketController@index')->name('batch_restaurant');
+Route::get('/entity/{id}/tickets', 'BatchTicketController@index')->name('batch_entity');
 Route::post('/upload_tickets', 'BatchTicketController@import')->name('upload_tickets');
-Route::get('/restaurant/{id_restau}/tickets/{id_batch}', 'BatchTicketController@showBatch')->name('show_batch');
-Route::delete('/restaurant/{id_restau}/tickets/{id_batch}', 'BatchTicketController@destroyBatch')->name('destroy_batch');
-Route::delete('/restaurant/{id_restau}/tickets/{id_batch}/id/{id_ticket}', 'BatchTicketController@destroyTickets')->name('destroy_tickets');
+Route::get('/entity/{id_restau}/tickets/{id_batch}', 'BatchTicketController@showBatch')->name('show_batch');
+Route::delete('/entity/{id_restau}/tickets/{id_batch}', 'BatchTicketController@destroyBatch')->name('destroy_batch');
+Route::delete('/entity/{id_restau}/tickets/{id_batch}/id/{id_ticket}', 'BatchTicketController@destroyTickets')->name('destroy_tickets');
 
 Route::get('/paiement-stage', 'PaymentController@indexPaiement')->name('page_payment_stripe');
 Route::post('/paiement-stage', 'PaymentController@payment')->name('payment_stripe');
