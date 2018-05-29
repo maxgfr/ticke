@@ -48,7 +48,7 @@ class PatternController extends Controller
     public function store(PatternRequest $request)
     {
         Pattern::create($request->all());
-        return redirect()->route('pattern.index')->with('success', 'Fournisseur ajouté avec succes!');
+        return redirect()->route('pattern.index')->with('success', 'Pattern ajouté avec succes!');
     }
 
     /**
@@ -70,11 +70,8 @@ class PatternController extends Controller
      */
     public function edit($id)
     {
-        $users = User::whereHas('roles', function($q){
-            $q->where('name', 'admin');
-        })->pluck('email', 'id');
         $pattern = Pattern::findOrFail($id);
-        return view('pattern.edit', compact('pattern', 'users'));
+        return view('pattern.edit', compact('pattern');
     }
 
     /**
@@ -88,7 +85,7 @@ class PatternController extends Controller
     {
         $pattern = Pattern::findOrFail($id);
         $pattern->update($request->all());
-        return redirect()->route('pattern.index')->with('success', 'Fournisseur mis à jour!');
+        return redirect()->route('pattern.index')->with('success', 'Pattern mis à jour!');
     }
 
     /**
@@ -101,6 +98,6 @@ class PatternController extends Controller
     {
         $pattern = Pattern::findOrFail($id);
         $pattern->delete();
-        return redirect()->route('pattern.index')->with('error', 'Fournisseur supprimé...');
+        return redirect()->route('pattern.index')->with('error', 'Pattern supprimé...');
     }
 }
