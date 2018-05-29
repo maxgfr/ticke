@@ -16,6 +16,7 @@ class CreateRepartition extends Migration
         Schema::create('repartition', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('total');
+            $table->string('nom');
             $table->integer('pattern_id')->unsigned()->index();
             $table->foreign('pattern_id')->references('id')->on('pattern')->onDelete('cascade');
             $table->timestamps();

@@ -4,14 +4,14 @@
 
     <div class="px-content">
         <div class="page-header">
-            <h1><span class="text-muted font-weight-light"><i class="fa fa-ticket-alt"></i></span> Gestion des entités</h1>
+            <h1><span class="text-muted font-weight-light"><i class="fa fa-ticket-alt"></i></span> Gestion des patterns</h1>
         </div>
 
         <div class="panel">
             <div class="panel-heading">
                 <div class="col-lg-12">
                     <div class="panel-title">
-                        <button type="button" class="pull-right btn btn-primary btn-outline btn-sm" data-toggle="modal" data-target="#create"><i class="fa fa-plus"></i> Ajouter une entité</button>
+                        <button type="button" class="pull-right btn btn-primary btn-outline btn-sm" data-toggle="modal" data-target="#create"><i class="fa fa-plus"></i> Ajouter un pattern</button>
                     </div>
                 </div>
             </div>
@@ -79,7 +79,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">×</button>
-                    <h4 class="modal-title" id="myModalLabel">Ajouter une entité</h4>
+                    <h4 class="modal-title" id="myModalLabel">Ajouter un pattern</h4>
                 </div>
                 <div class="modal-body">
                     <div class="alert alert-danger alert-max hidden">
@@ -121,7 +121,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header"><i class="fa fa-times-circle"></i></div>
-                <div class="modal-title">Suppression d'une entité</div>
+                <div class="modal-title">Suppression d'un pattern</div>
                 <div class="modal-body">Impossible de revenir en arrière</div>
                 <div class="modal-footer">
                     <button class="btn btn-danger" type="button" id="delete-object">
@@ -140,7 +140,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Modification d'une entité</h4>
+                    <h4 class="modal-title">Modification d'un pattern</h4>
                 </div>
                 <div class="modal-body">
                     <div class="alert alert-danger alert-max-edit hidden">

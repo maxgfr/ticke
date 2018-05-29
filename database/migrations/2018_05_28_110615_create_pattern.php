@@ -15,10 +15,7 @@ class CreatePattern extends Migration
     {
         Schema::create('pattern', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('total_number');
             $table->string('nom');
-            $table->integer('entity_id')->unsigned()->nullable()->index();
-            $table->foreign('entity_id')->references('id')->on('entity');
             $table->integer('users_id')->unsigned()->nullable()->index();
             $table->foreign('users_id')->references('id')->on('users');
             $table->timestamps();
