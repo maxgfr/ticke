@@ -42,7 +42,7 @@
           <a href="{{route('home')}}"><i class="px-nav-icon fa fa-th"></i><span class="px-nav-label"> Dashboard</span></a>
         </li>
       <li class="px-nav-item">
-        <a href="{{route('restaurant.index')}}"><i class="px-nav-icon fa fa-ticket-alt"></i><span class="px-nav-label"> Tickets</span></a>
+        <a href="{{route('entity.index')}}"><i class="px-nav-icon fa fa-ticket-alt"></i><span class="px-nav-label"> Tickets</span></a>
       </li>
       <li class="px-nav-item">
         <a href="{{route('page_payment_stripe')}}"><i class="px-nav-icon fa fa-money-bill-alt"></i><span class="px-nav-label"> Abonnement</span></a>
@@ -98,7 +98,7 @@
   <!-- Your scripts -->
   <script src="{{ URL::asset('js/app.js') }}"></script>
 
-  <script src="{{ URL::asset('js/restaurant.js') }}"></script>
+  <script src="{{ URL::asset('js/entity.js') }}"></script>
 
 
   <script>
