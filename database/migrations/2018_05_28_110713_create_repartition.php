@@ -17,6 +17,7 @@ class CreateRepartition extends Migration
             $table->increments('id');
             $table->integer('total');
             $table->string('nom');
+            $table->integer('emplacement');
             $table->integer('pattern_id')->unsigned()->index();
             $table->foreign('pattern_id')->references('id')->on('pattern')->onDelete('cascade');
             $table->timestamps();

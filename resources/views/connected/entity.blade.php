@@ -48,7 +48,7 @@
                                     <td class="text-center">
                                         <div class="row">
                                             <div class="col-lg-4">
-                                                <a class="btn btn-primary btn-sm" href="{{route('batch_restaurant', ['id' => $entity->id])}}">
+                                                <a class="btn btn-primary btn-sm" href="{{route('batch.index', ['id' => $entity->id])}}">
                                                     <span class="glyphicon glyphicon-menu-right"></span> Tickets
                                                 </a>
                                             </div>

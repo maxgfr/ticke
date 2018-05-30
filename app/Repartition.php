@@ -26,7 +26,7 @@ class Repartition extends Model
      * @var array
      */
     protected $fillable = [
-        'total', 'pattern_id'
+        'total', 'pattern_id', 'emplacement'
     ];
 
     public function enitity()
