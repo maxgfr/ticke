@@ -191,4 +191,6 @@
 
     </div>
 
+    <script src="{{ URL::asset('js/repartition.js') }}"></script>
+
 @endsection

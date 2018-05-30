@@ -51,7 +51,7 @@
                                                 </a>
                                             </div>
                                             <div class="col-lg-4">
-                                                <button class="btn btn-warning btn-sm edit-modal" data-id="{{$pattern->id}}" data-nom="{{$pattern->nom}}" data-adr="{{$pattern->adr}}" data-ville="{{$pattern->ville}}" data-cp="{{$pattern->cp}}"  data-mobile="{{$pattern->mobile}}" >
+                                                <button class="btn btn-warning btn-sm edit-modal" data-id="{{$pattern->id}}" data-nom="{{$pattern->nom}}" >
                                                     <span class="glyphicon glyphicon-pencil"></span> Editer
                                                 </button>
                                             </div>
@@ -168,5 +168,7 @@
         </div>
 
     </div>
+
+    <script src="{{ URL::asset('js/pattern.js') }}"></script>
 
 @endsection

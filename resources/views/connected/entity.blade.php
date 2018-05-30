@@ -53,7 +53,7 @@
                                                 </a>
                                             </div>
                                             <div class="col-lg-4">
-                                                <button class="btn btn-warning btn-sm edit-modal" data-id="{{$entity->id}}" data-nom="{{$entity->nom}}" data-adr="{{$entity->adr}}" data-ville="{{$entity->ville}}" data-cp="{{$entity->cp}}"  data-mobile="{{$entity->mobile}}" >
+                                                <button class="btn btn-warning btn-sm edit-modal" data-id="{{$entity->id}}" data-nom="{{$entity->nom}}" data-adr="{{$entity->adr}}" >
                                                     <span class="glyphicon glyphicon-pencil"></span> Editer
                                                 </button>
                                             </div>
@@ -181,5 +181,7 @@
         </div>
 
     </div>
+
+    <script src="{{ URL::asset('js/entity.js') }}"></script>
 
 @endsection

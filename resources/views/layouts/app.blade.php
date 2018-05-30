@@ -27,6 +27,9 @@
   <!-- Pace.js -->
   <script src="{{ URL::asset('pace/pace.min.js') }}"></script>
 
+  <!-- Load jQuery -->
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 </head>
 <body>
   <!-- Nav -->
@@ -42,7 +45,10 @@
           <a href="{{route('home')}}"><i class="px-nav-icon fa fa-th"></i><span class="px-nav-label"> Dashboard</span></a>
         </li>
       <li class="px-nav-item">
-        <a href="{{route('entity.index')}}"><i class="px-nav-icon fa fa-ticket-alt"></i><span class="px-nav-label"> Tickets</span></a>
+        <a href="{{route('entity.index')}}"><i class="px-nav-icon fa fa-building"></i><span class="px-nav-label"> Entités</span></a>
+      </li>
+      <li class="px-nav-item">
+        <a href="{{route('pattern.index')}}"><i class="px-nav-icon fa fa-clipboard"></i><span class="px-nav-label"> Patterns</span></a>
       </li>
       <li class="px-nav-item">
         <a href="{{route('page_payment_stripe')}}"><i class="px-nav-icon fa fa-money-bill-alt"></i><span class="px-nav-label"> Abonnement</span></a>
@@ -88,8 +94,6 @@
   |
   =============================================================================== -->
 
-  <!-- Load jQuery -->
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
   <!-- Core scripts -->
   <script src="{{ URL::asset('js/bootstrap.min.js') }}"></script>
@@ -97,9 +101,6 @@
 
   <!-- Your scripts -->
   <script src="{{ URL::asset('js/app.js') }}"></script>
-
-  <script src="{{ URL::asset('js/entity.js') }}"></script>
-
 
   <script>
     // -------------------------------------------------------------------------
