@@ -9,7 +9,6 @@ $(document).ready(function() {
     $(document).on('click','.create-modal', function() {
         $('#create').modal('show');
         $('.form-horizontal').show();
-        $('.modal-title').text('Add Post');
     });
 
     $("#add").click(function() {
@@ -40,9 +39,8 @@ $(document).ready(function() {
                     '<td class="text-center">' + data.adr +'</td>'+
                     "<td class='text-center'>"+
                         "<div class='row'>"+
-                            "<div class='col-lg-4'><a class='btn btn-primary btn-sm' href='/entity/"+data.id+"/tickets'><span class='glyphicon glyphicon-menu-right'></span> Tickets</a></div>"+
-                            "<div class='col-lg-4'><button class='edit-modal btn btn-warning btn-sm' data-id='" + data.id + "' data-nom='" + data.nom + "' data-adr='" + data.adr +  "'><span class='glyphicon glyphicon-pencil'></span> Editer</button></div>"+
-                            "<div class='col-lg-4'><button class='delete-modal btn btn-danger btn-sm' data-id='" + data.id + "' data-nom='" + data.nom + "' data-adr='" + data.adr +  "'><span class='glyphicon glyphicon-trash'></span> Supprimer</button></div>"+
+                            "<div class='col-md-6'><button class='edit-modal btn btn-warning btn-sm' data-id='" + data.id + "' data-nom='" + data.nom + "' data-adr='" + data.adr +  "'><span class='glyphicon glyphicon-pencil'></span> Editer</button></div>"+
+                            "<div class='col-md-6'><button class='delete-modal btn btn-danger btn-sm' data-id='" + data.id + "' data-nom='" + data.nom + "' data-adr='" + data.adr +  "'><span class='glyphicon glyphicon-trash'></span> Supprimer</button></div>"+
                         "</div>"+
                     "</td>"+"</tr>");
                     $('#nom').val('');
@@ -85,9 +83,6 @@ $(document).ready(function() {
         val_to_edit= $(this).data('id');
         $('#nom_edit').val($(this).data('nom'));
         $('#adr_edit').val($(this).data('adr'));
-        $('#cp_edit').val($(this).data('cp'));
-        $('#ville_edit').val($(this).data('ville'));
-        $('#mobile_edit').val($(this).data('mobile'));
         $('#myModal').modal('show');
     });
 
@@ -101,9 +96,6 @@ $(document).ready(function() {
                 'id': val_to_edit,
                 'nom': $('input[name=nom_edit]').val(),
                 'adr': $('input[name=adr_edit]').val(),
-                'ville': $('input[name=ville_edit]').val(),
-                'cp': $('input[name=cp_edit]').val(),
-                'mobile': $('input[name=mobile_edit]').val(),
             },
             success: function(data) {
                 console.log('Success:', data);
@@ -117,33 +109,19 @@ $(document).ready(function() {
                     if (data.errors.adr) {
                         msg_error += data.errors.adr;
                     }
-                    if (data.errors.cp) {
-                        msg_error += data.errors.cp;
-                    }
-                    if (data.errors.ville) {
-                        msg_error += data.errors.ville;
-                    }
-                    if (data.errors.mobile) {
-                        msg_error += data.errors.mobile;
-                    }
                     $('.error-max-edit').text(msg_error);
                 } else {
                     $('.post' + data.id).replaceWith("<tr class='post" + data.id + "'>"+
                     '<td class="text-center">' + data.nom + '</td>'+
-                    '<td class="text-center">' + data.adr + data.ville +'</td>'+
-                    '<td class="text-center">' + data.mobile + '</td>'+
+                    '<td class="text-center">' + data.adr +'</td>'+
                     "<td class='text-center'>"+
                         "<div class='row'>"+
-                            "<div class='col-lg-4'><a class='btn btn-primary btn-sm' href='/entity/"+data.id+"/tickets'><span class='glyphicon glyphicon-menu-right'></span> Tickets</a></div>"+
-                            "<div class='col-lg-4'><button class='edit-modal btn btn-warning btn-sm' data-id='" + data.id + "' data-nom='" + data.nom + "' data-adr='" + data.adr + "' data-ville='" + data.ville + "' data-cp='" + data.cp + "' data-mobile='" + data.mobile +  "'><span class='glyphicon glyphicon-pencil'></span> Editer</button></div>"+
-                            "<div class='col-lg-4'><button class='delete-modal btn btn-danger btn-sm' data-id='" + data.id + "' data-nom='" + data.nom + "' data-adr='" + data.adr + "' data-ville='" + data.ville + "' data-cp='" + data.cp + "' data-mobile='" + data.mobile +  "'><span class='glyphicon glyphicon-trash'></span> Supprimer</button></div>"+
+                            "<div class='col-md-6'><button class='edit-modal btn btn-warning btn-sm' data-id='" + data.id + "' data-nom='" + data.nom + "' data-adr='" + data.adr + "' data-ville='" + data.ville + "' data-cp='" + data.cp + "' data-mobile='" + data.mobile +  "'><span class='glyphicon glyphicon-pencil'></span> Editer</button></div>"+
+                            "<div class='col-md-6'><button class='delete-modal btn btn-danger btn-sm' data-id='" + data.id + "' data-nom='" + data.nom + "' data-adr='" + data.adr + "' data-ville='" + data.ville + "' data-cp='" + data.cp + "' data-mobile='" + data.mobile +  "'><span class='glyphicon glyphicon-trash'></span> Supprimer</button></div>"+
                         "</div>"+
                     "</td>"+"</tr>");
                     $('#nom_edit').val('');
                     $('#adr_edit').val('');
-                    $('#ville_edit').val('');
-                    $('#cp_edit').val('');
-                    $('#mobile_edit').val('');
                     $('#edit').modal('hide');
                 }
             },

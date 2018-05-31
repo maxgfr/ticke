@@ -9,7 +9,6 @@ $(document).ready(function() {
     $(document).on('click','.create-modal', function() {
         $('#create').modal('show');
         $('.form-horizontal').show();
-        $('.modal-title').text('Add Post');
     });
 
     $("#add").click(function() {
@@ -35,7 +34,7 @@ $(document).ready(function() {
                     '<td class="text-center">' + data.nom + '</td>'+
                     "<td class='text-center'>"+
                         "<div class='row'>"+
-                            "<div class='col-lg-4'><a class='btn btn-primary btn-sm' href='/pattern/"+data.id+"/tickets'><span class='glyphicon glyphicon-menu-right'></span> Tickets</a></div>"+
+                            "<div class='col-lg-4'><a class='btn btn-primary btn-sm' href='/pattern/"+data.id+"/repartitions'><span class='glyphicon glyphicon-menu-right'></span> Répartitions</a></div>"+
                             "<div class='col-lg-4'><button class='edit-modal btn btn-warning btn-sm' data-id='" + data.id + "' data-nom='" + data.nom + "'><span class='glyphicon glyphicon-pencil'></span> Editer</button></div>"+
                             "<div class='col-lg-4'><button class='delete-modal btn btn-danger btn-sm' data-id='" + data.id + "' data-nom='" + data.nom + "'><span class='glyphicon glyphicon-trash'></span> Supprimer</button></div>"+
                         "</div>"+
@@ -107,16 +106,12 @@ $(document).ready(function() {
                     '<td class="text-center">' + data.nom + '</td>'+
                     "<td class='text-center'>"+
                         "<div class='row'>"+
-                            "<div class='col-lg-4'><a class='btn btn-primary btn-sm' href='/pattern/"+data.id+"/tickets'><span class='glyphicon glyphicon-menu-right'></span> Tickets</a></div>"+
+                            "<div class='col-lg-4'><a class='btn btn-primary btn-sm' href='/pattern/"+data.id+"/repartitions'><span class='glyphicon glyphicon-menu-right'></span> Répartitions</a></div>"+
                             "<div class='col-lg-4'><button class='edit-modal btn btn-warning btn-sm' data-id='" + data.id + "' data-nom='" + data.nom + "'><span class='glyphicon glyphicon-pencil'></span> Editer</button></div>"+
                             "<div class='col-lg-4'><button class='delete-modal btn btn-danger btn-sm' data-id='" + data.id + "' data-nom='" + data.nom + "'><span class='glyphicon glyphicon-trash'></span> Supprimer</button></div>"+
                         "</div>"+
                     "</td>"+"</tr>");
                     $('#nom_edit').val('');
-                    $('#adr_edit').val('');
-                    $('#ville_edit').val('');
-                    $('#cp_edit').val('');
-                    $('#mobile_edit').val('');
                     $('#edit').modal('hide');
                 }
             },

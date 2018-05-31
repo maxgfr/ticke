@@ -4,7 +4,7 @@
 
     <div class="px-content">
         <div class="page-header">
-            <h1><span class="text-muted font-weight-light"><i class="fa fa-ticket-alt"></i></span> Gestion des entités</h1>
+            <h1><span class="text-muted font-weight-light"><i class="fa fa-building"></i></span> Gestion des entités</h1>
         </div>
 
         <div class="panel">
@@ -47,17 +47,12 @@
                                     <td class="text-center">{{$entity->adr}}</td>
                                     <td class="text-center">
                                         <div class="row">
-                                            <div class="col-lg-4">
-                                                <a class="btn btn-primary btn-sm" href="{{route('batch.index', ['id' => $entity->id])}}">
-                                                    <span class="glyphicon glyphicon-menu-right"></span> Tickets
-                                                </a>
-                                            </div>
-                                            <div class="col-lg-4">
+                                            <div class="col-md-6">
                                                 <button class="btn btn-warning btn-sm edit-modal" data-id="{{$entity->id}}" data-nom="{{$entity->nom}}" data-adr="{{$entity->adr}}" >
                                                     <span class="glyphicon glyphicon-pencil"></span> Editer
                                                 </button>
                                             </div>
-                                            <div class="col-lg-4">
+                                            <div class="col-md-6">
                                                 <button class="btn btn-danger btn-sm delete-modal" data-id="{{$entity->id}}">
                                                     <span class="glyphicon glyphicon-trash"></span> Supprimer
                                                 </button>

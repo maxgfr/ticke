@@ -78,7 +78,7 @@ Route::post('/pattern/store', 'PatternController@store')->name('pattern.store');
 Route::post('/pattern/update', 'PatternController@update')->name('pattern.update');
 Route::delete('/pattern/destroy', 'PatternController@destroy')->name('pattern.destroy');
 
-Route::get('/pattern/{id_pattern}/repartition', 'RepartitionController@index')->name('repartition.index');
+Route::get('/pattern/{id}/repartition', 'RepartitionController@index')->name('repartition.index');
 Route::post('/repartition/store', 'RepartitionController@store')->name('repartition.store');
 Route::post('/repartition/update', 'RepartitionController@update')->name('repartition.update');
 Route::delete('/repartition/destroy', 'RepartitionController@destroy')->name('repartition.destroy');

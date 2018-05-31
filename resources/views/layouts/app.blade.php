@@ -24,11 +24,11 @@
   <!-- Theme -->
   <link href="{{ URL::asset('css/themes/default.min.css') }}" rel="stylesheet" type="text/css">
 
-  <!-- Pace.js -->
-  <script src="{{ URL::asset('pace/pace.min.js') }}"></script>
-
   <!-- Load jQuery -->
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <!-- Pace.js -->
+  <script src="{{ URL::asset('pace/pace.min.js') }}"></script>
 
 </head>
 <body>
@@ -81,6 +81,8 @@
     </div>
   </nav>
 
+
+
   @yield('content')
 
   <!-- Footer -->
@@ -102,82 +104,6 @@
   <!-- Your scripts -->
   <script src="{{ URL::asset('js/app.js') }}"></script>
 
-  <script>
-    // -------------------------------------------------------------------------
-    // Initialize balance chart
 
-    $(function() {
-      if (pxUtil.default) { pxUtil = pxUtil.default; }
-
-      var chartColor = 1;
-      var data = [31600,31600,31600,31600,31600,31600];
-
-      $("#balance-chart").pxSparkline(data, {
-        type: 'line',
-        width: '100%',
-        height: '60px',
-        fillColor: 2,
-        lineColor: chartColor,
-        lineWidth: 1,
-        spotColor: null,
-        minSpotColor: null,
-        maxSpotColor: null,
-        highlightSpotColor: chartColor,
-        highlightLineColor: chartColor,
-        spotRadius: 3,
-      });
-    });
-
-    // -------------------------------------------------------------------------
-    // Initialize revenue chart
-
-    $(function() {
-
-      var chartColor = 1;
-      var data = {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-        datasets: [{
-          label:           'Revenue, $',
-          data:            [31600,31600,31600,31600,31600,31600,31500],
-          borderWidth:     1,
-          backgroundColor: 1,
-          borderColor:     chartColor,
-        }],
-      };
-
-      new Chart(document.getElementById('revenue-chart').getContext("2d"), {
-        type: 'line',
-        data: data,
-        options: {
-          legend: { display: false },
-        },
-      });
-    });
-
-    // -------------------------------------------------------------------------
-    // Initialize expenses chart
-
-    $(function() {
-      var chartColor = 1;
-      var data = {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-        datasets: [{
-          label:           'Expenses, $',
-          data:            [31600,31600,31600,31600,31600,31600,31500],
-          borderWidth:     1,
-          backgroundColor: 1,
-          borderColor:     chartColor,
-        }],
-      };
-
-      new Chart(document.getElementById('expenses-chart').getContext("2d"), {
-        type: 'bar',
-        data: data,
-        options: {
-          legend: { display: false },
-        },
-      });
-    });
-  </script>
 </body>
 </html>

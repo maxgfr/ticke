@@ -4,7 +4,7 @@
 
     <div class="px-content">
         <div class="page-header">
-            <h1><span class="text-muted font-weight-light"><i class="fa fa-ticket-alt"></i></span> Gestion des patterns</h1>
+            <h1><span class="text-muted font-weight-light"><i class="fa fa-clipboard"></i></span> Gestion des patterns</h1>
         </div>
 
         <div class="panel">

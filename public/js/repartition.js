@@ -9,7 +9,6 @@ $(document).ready(function() {
     $(document).on('click','.create-modal', function() {
         $('#create').modal('show');
         $('.form-horizontal').show();
-        $('.modal-title').text('Add Post');
     });
 
     $("#add").click(function() {
@@ -19,10 +18,9 @@ $(document).ready(function() {
             data: {
                 '_token': $('input[name=_token]').val(),
                 'nom': $('input[name=nom]').val(),
-                'adr': $('input[name=adr]').val(),
-                'ville': $('input[name=ville]').val(),
-                'cp': $('input[name=cp]').val(),
-                'mobile': $('input[name=mobile]').val(),
+                'pattern_id': $('input[name=pattern_id]').val(),
+                'emplacement': $('input[name=emplacement]').val(),
+                'total': $('input[name=total]').val()
             },
             success: function(data){
                 console.log('Success:', data);
@@ -33,36 +31,27 @@ $(document).ready(function() {
                     if (data.errors.nom) {
                         msg_error += data.errors.nom;
                     }
-                    if (data.errors.adr) {
-                        msg_error += data.errors.adr;
+                    if (data.errors.emplacement) {
+                        msg_error += data.errors.emplacement;
                     }
-                    if (data.errors.cp) {
-                        msg_error += data.errors.cp;
-                    }
-                    if (data.errors.ville) {
-                        msg_error += data.errors.ville;
-                    }
-                    if (data.errors.mobile) {
-                        msg_error += data.errors.mobile;
+                    if (data.errors.total) {
+                        msg_error += data.errors.total;
                     }
                     $('.error-max').text(msg_error);
                 } else {
                     $('#datatables').append("<tr class='post" + data.id + "'>"+
                     '<td class="text-center">' + data.nom + '</td>'+
-                    '<td class="text-center">' + data.adr + data.ville +'</td>'+
-                    '<td class="text-center">' + data.mobile + '</td>'+
+                    '<td class="text-center">' + data.total +'</td>'+
+                    '<td class="text-center">' + data.emplacement + '</td>'+
                     "<td class='text-center'>"+
                         "<div class='row'>"+
-                            "<div class='col-lg-4'><a class='btn btn-primary btn-sm' href='/repartition/"+data.id+"/tickets'><span class='glyphicon glyphicon-menu-right'></span> Tickets</a></div>"+
-                            "<div class='col-lg-4'><button class='edit-modal btn btn-warning btn-sm' data-id='" + data.id + "' data-nom='" + data.nom + "' data-adr='" + data.adr + "' data-ville='" + data.ville + "' data-cp='" + data.cp + "' data-mobile='" + data.mobile +  "'><span class='glyphicon glyphicon-pencil'></span> Editer</button></div>"+
-                            "<div class='col-lg-4'><button class='delete-modal btn btn-danger btn-sm' data-id='" + data.id + "' data-nom='" + data.nom + "' data-adr='" + data.adr + "' data-ville='" + data.ville + "' data-cp='" + data.cp + "' data-mobile='" + data.mobile +  "'><span class='glyphicon glyphicon-trash'></span> Supprimer</button></div>"+
+                            "<div class='col-md-6'><button class='edit-modal btn btn-warning btn-sm' data-id='" + data.id + "' data-nom='" + data.nom + "' data-total='" + data.total + "' data-emplacement='" + data.emplacement + "'><span class='glyphicon glyphicon-pencil'></span> Editer</button></div>"+
+                            "<div class='col-md-6'><button class='delete-modal btn btn-danger btn-sm' data-id='" + data.id +  "'><span class='glyphicon glyphicon-trash'></span> Supprimer</button></div>"+
                         "</div>"+
                     "</td>"+"</tr>");
                     $('#nom').val('');
-                    $('#adr').val('');
-                    $('#ville').val('');
-                    $('#cp').val('');
-                    $('#mobile').val('');
+                    $('#total').val('');
+                    $('#emplacement').val('');
                     $('#create').modal('hide');
                 }
             },
@@ -136,20 +125,17 @@ $(document).ready(function() {
                 } else {
                     $('.post' + data.id).replaceWith("<tr class='post" + data.id + "'>"+
                     '<td class="text-center">' + data.nom + '</td>'+
-                    '<td class="text-center">' + data.adr + data.ville +'</td>'+
-                    '<td class="text-center">' + data.mobile + '</td>'+
+                    '<td class="text-center">' + data.total +'</td>'+
+                    '<td class="text-center">' + data.emplacement + '</td>'+
                     "<td class='text-center'>"+
                         "<div class='row'>"+
-                            "<div class='col-lg-4'><a class='btn btn-primary btn-sm' href='/repartition/"+data.id+"/tickets'><span class='glyphicon glyphicon-menu-right'></span> Tickets</a></div>"+
-                            "<div class='col-lg-4'><button class='edit-modal btn btn-warning btn-sm' data-id='" + data.id + "' data-nom='" + data.nom + "' data-adr='" + data.adr + "' data-ville='" + data.ville + "' data-cp='" + data.cp + "' data-mobile='" + data.mobile +  "'><span class='glyphicon glyphicon-pencil'></span> Editer</button></div>"+
-                            "<div class='col-lg-4'><button class='delete-modal btn btn-danger btn-sm' data-id='" + data.id + "' data-nom='" + data.nom + "' data-adr='" + data.adr + "' data-ville='" + data.ville + "' data-cp='" + data.cp + "' data-mobile='" + data.mobile +  "'><span class='glyphicon glyphicon-trash'></span> Supprimer</button></div>"+
+                        "<div class='col-md-6'><button class='edit-modal btn btn-warning btn-sm' data-id='" + data.id + "' data-nom='" + data.nom + "' data-total='" + data.total + "' data-emplacement='" + data.emplacement + "'><span class='glyphicon glyphicon-pencil'></span> Editer</button></div>"+
+                        "<div class='col-md-6'><button class='delete-modal btn btn-danger btn-sm' data-id='" + data.id +  "'><span class='glyphicon glyphicon-trash'></span> Supprimer</button></div>"+
                         "</div>"+
                     "</td>"+"</tr>");
                     $('#nom_edit').val('');
-                    $('#adr_edit').val('');
-                    $('#ville_edit').val('');
-                    $('#cp_edit').val('');
-                    $('#mobile_edit').val('');
+                    $('#total_edit').val('');
+                    $('#emplacement_edit').val('');
                     $('#edit').modal('hide');
                 }
             },

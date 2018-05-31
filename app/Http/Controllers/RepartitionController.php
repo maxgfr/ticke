@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Repartition;
 use App\Pattern;
 use Validator;
 use Response;
 use Auth;
 use Illuminate\Support\Facades\Input;
 
-class PatternController extends Controller
+class RepartitionController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -26,10 +27,11 @@ class PatternController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        $patterns = Auth::user()->pattern()->get();
-        return view('connected.pattern', compact('patterns'));
+        $pattern = Pattern::findOrFail($id);
+        $repartitions = $pattern->repartition()->get();
+        return view('connected.repartition', compact('repartitions', 'id'));
     }
 
     /**
@@ -41,7 +43,8 @@ class PatternController extends Controller
     public function store(Request $request)
     {
         $rules = array(
-            'nom' => 'required'
+            'emplacement' => 'required',
+            'total' => 'required',
         );
         $validator = Validator::make(Input::all(), $rules);
         if ($validator->fails()) {
@@ -49,7 +52,7 @@ class PatternController extends Controller
                     'errors' => $validator->getMessageBag()->toArray(),
             ));
         } else {
-            $data = Pattern::create(array_merge($request->all(), ['users_id' => Auth::user()->id]));
+            $data = Repartition::create(array_merge($request->all(), ['pattern_id' => $request->get('pattern_id')]));
             return response()->json($data);
         }
     }
@@ -65,7 +68,8 @@ class PatternController extends Controller
     public function update(Request $req)
     {
         $rules = array(
-            'nom' => 'required'
+            'emplacement' => 'required',
+            'total' => 'required'
         );
         $validator = Validator::make(Input::all(), $rules);
         if ($validator->fails()) {
@@ -73,8 +77,12 @@ class PatternController extends Controller
                     'errors' => $validator->getMessageBag()->toArray(),
             ));
         } else {
-            $data = Pattern::findOrFail($req->id);
-            $data->nom = $req->nom;
+            $data = Repartition::findOrFail($req->id);
+            if ($req->nom != "") {
+                $data->nom = $req->nom;
+            }
+            $data->emplacement = $req->emplacement;
+            $data->total = $req->total;
             $data->save();
             return response()->json($req);
         }
@@ -88,14 +96,14 @@ class PatternController extends Controller
      */
      public function destroy(Request $req)
      {
-         $pattern = Pattern::findOrFail($req->id);
+         $repartion = Repartition::findOrFail($req->id);
          /* Security */
          $id_user = Auth::user()->id;
-         if ($id_user != $pattern->users_id) {
+         if ($id_user != $repartion->users_id) {
              abort(404);
          }
          /* End security */
-         $pattern->delete();
+         $repartion->delete();
          return response()->json();
      }
 }

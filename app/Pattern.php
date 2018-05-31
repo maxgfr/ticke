@@ -26,14 +26,13 @@ class Pattern extends Model
      * @var array
      */
     protected $fillable = [
-        'total_number', 'nom', 'entity_id'
+        'nom', 'users_id'
     ];
 
-    public function enitity()
+    public function user()
     {
-        return $this->belongsTo(Entity::class);
+        return $this->belongsTo(User::class);
     }
-
 
     public function repartition()
     {

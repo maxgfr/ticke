@@ -3,7 +3,7 @@
 @section ('content')
     <!-- Content -->
     <div class="px-content">
-        
+
         <div class="page-header m-b-0">
           <div class="row">
             <div class="col-md-4">
@@ -72,6 +72,83 @@
         <!-- / Money flow charts -->
     </div>
 
+    <script>
+      // -------------------------------------------------------------------------
+      // Initialize balance chart
+
+      $(function() {
+        if (pxUtil.default) { pxUtil = pxUtil.default; }
+
+        var chartColor = 1;
+        var data = [31600,31600,31600,31600,31600,31600];
+
+        $("#balance-chart").pxSparkline(data, {
+          type: 'line',
+          width: '100%',
+          height: '60px',
+          fillColor: 2,
+          lineColor: chartColor,
+          lineWidth: 1,
+          spotColor: null,
+          minSpotColor: null,
+          maxSpotColor: null,
+          highlightSpotColor: chartColor,
+          highlightLineColor: chartColor,
+          spotRadius: 3,
+        });
+      });
+
+      // -------------------------------------------------------------------------
+      // Initialize revenue chart
+
+      $(function() {
+
+        var chartColor = 1;
+        var data = {
+          labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+          datasets: [{
+            label:           'Revenue, $',
+            data:            [31600,31600,31600,31600,31600,31600,31500],
+            borderWidth:     1,
+            backgroundColor: 1,
+            borderColor:     chartColor,
+          }],
+        };
+
+        new Chart(document.getElementById('revenue-chart').getContext("2d"), {
+          type: 'line',
+          data: data,
+          options: {
+            legend: { display: false },
+          },
+        });
+      });
+
+      // -------------------------------------------------------------------------
+      // Initialize expenses chart
+
+      $(function() {
+        var chartColor = 1;
+        var data = {
+          labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+          datasets: [{
+            label:           'Expenses, $',
+            data:            [31600,31600,31600,31600,31600,31600,31500],
+            borderWidth:     1,
+            backgroundColor: 1,
+            borderColor:     chartColor,
+          }],
+        };
+
+        new Chart(document.getElementById('expenses-chart').getContext("2d"), {
+          type: 'bar',
+          data: data,
+          options: {
+            legend: { display: false },
+          },
+        });
+      });
+    </script>
 
 
 @endsection

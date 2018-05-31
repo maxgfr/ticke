@@ -4,7 +4,7 @@
 
     <div class="px-content">
         <div class="page-header">
-            <h1><span class="text-muted font-weight-light"><i class="fa fa-ticket-alt"></i></span> Gestion des répartitions</h1>
+            <h1><span class="text-muted font-weight-light"><i class="fa fa-align-justify"></i></span> Gestion des répartitions</h1>
         </div>
 
         <div class="panel">
@@ -42,20 +42,20 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($répartitions as $répartition)
-                                <tr class="post{{$répartition->id}}">
-                                    <td class="text-center">{{$répartition->nom}}</td>
-                                    <td class="text-center">{{$répartition->total}}</td>
-                                    <td class="text-center">{{$répartition->emplacement}}</td>
+                            @foreach($repartitions as $repar)
+                                <tr class="post{{$repar->id}}">
+                                    <td class="text-center">{{$repar->nom}}</td>
+                                    <td class="text-center">{{$repar->total}}</td>
+                                    <td class="text-center">{{$repar->emplacement}}</td>
                                     <td class="text-center">
                                         <div class="row">
-                                            <div class="col-lg-6">
-                                                <button class="btn btn-warning btn-sm edit-modal" data-id="{{$répartition->id}}" data-nom="{{$répartition->nom}}" data-total="{{$répartition->total}}" data-ville="{{$répartition->ville}}" data-cp="{{$répartition->cp}}"  data-mobile="{{$répartition->mobile}}" >
+                                            <div class="col-md-6">
+                                                <button class="btn btn-warning btn-sm edit-modal" data-id="{{$repar->id}}" data-nom="{{$repar->nom}}" data-total="{{$repar->total}}" data-emplacement="{{$repar->emplacement}}">
                                                     <span class="glyphicon glyphicon-pencil"></span> Editer
                                                 </button>
                                             </div>
-                                            <div class="col-lg-6">
-                                                <button class="btn btn-danger btn-sm delete-modal" data-id="{{$répartition->id}}">
+                                            <div class="col-md-6">
+                                                <button class="btn btn-danger btn-sm delete-modal" data-id="{{$repar->id}}">
                                                     <span class="glyphicon glyphicon-trash"></span> Supprimer
                                                 </button>
                                             </div>
@@ -105,7 +105,7 @@
 
                         {!! csrf_field() !!}
 
-                        <input type="hidden" class="form-control" id="responsable" value="{{Auth::user()->id}}">
+                        <input type="hidden" class="form-control" name="pattern_id" id="pattern_id" value="{{$id}}">
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -173,7 +173,7 @@
 
                         {!! csrf_field() !!}
 
-                        <input type="hidden" class="form-control" id="responsable" value="{{Auth::user()->id}}">
+                        <input type="hidden" class="form-control" name="pattern_id" id="pattern_id" value="{{$id}}">
                     </form>
                     <div class="modal-footer">
 
