@@ -32,7 +32,7 @@ class Repartition extends Model
     public function enitity()
     {
         return $this->belongsTo(Pattern::class);
-    }    
+    }
 
     public function ticket()
     {

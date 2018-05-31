@@ -5,7 +5,7 @@
     <div class="px-content">
 
         <div class="page-header">
-            <h1><span class="text-muted font-weight-light"><a href="{{route('entityrant.index')}}"><i class="fa fa-ticket-alt"></i> Gestion des tickets entityrant</a>  / </span>{{$entity->nom}}</h1>
+            <h1><span class="text-muted font-weight-light"><a href="{{route('batch.index')}}"><i class="fa fa-ticket-alt"></i> Gestion des batchs </a>  / </span>{{$entity->nom}}  (pattern : {{$pattern->nom}}) </h1>
         </div>
 
         <div class="panel">
@@ -20,7 +20,8 @@
 
                         {!! csrf_field() !!}
 
-                        {{ Form::hidden('entityrant_id', $entity->id) }}
+                        {{ Form::hidden('id_entity', $entity->id) }}
+                        {{ Form::hidden('id_pattern', $pattern->id) }}
 
                         <label class="pull-right btn btn-primary btn-outline btn-sm">
                             <i class="fa fa-upload" aria-hidden="true"></i>   Upload TXT   <input type="file" onchange="this.form.submit()" name="file" style="display: none;"/>
@@ -55,7 +56,6 @@
                             <tr>
                                 <th class="text-center">Identifiant</th>
                                 <th class="text-center">Date</th>
-                                <th class="text-center">Pattern</th>
                                 <th class="text-center">Actions</th>
                             </tr>
                         </thead>
@@ -64,18 +64,14 @@
                                 <tr class="post{{$btch->id}}">
                                     <td class="text-center">{{$btch->id}}</td>
                                     <td class="text-center">{{$btch->date}}</td>
-                                    <td class="text-center">{{$btch->pattern_id}}</td>
                                     <td class="text-center">
-
                                         <div class="row">
-                                            <div class="col-lg-4">
-                                                <a href="{{ route('batch.show', ['id_batch' => $btch->id, 'id_entity' => $entity->id]) }}" class="btn btn-primary btn-sm"><i class="fa fa-arrow-right"></i> Informations</a>
+                                            <div class="col-lg-6">
+                                                <a href="{{ route('batch.show', ['id_entity' => $entity->id, 'id_pattern' => $pattern->id, 'id_batch' => $btch->id, 'id_entity' => $entity->id]) }}" class="btn btn-primary btn-sm"><i class="fa fa-arrow-right"></i> Informations</a>
                                             </div>
-
-                                            <div class="col-lg-4">
+                                            <div class="col-lg-6">
                                                 {!! Form::model($btch, ['method' => 'DELETE', 'route' => ['batch.destroy', $entity->id, $btch->id ], 'style' => 'display:inline;']) !!}
                                                 {!! csrf_field() !!}
-
                                                 {!! Form::button('<i class="fa fa-trash-alt" aria-hidden="true"></i> Supprimer', ['class' => 'btn btn-danger btn-sm', 'type' => 'submit']) !!}
                                                 {!! Form::close() !!}
                                             </div>

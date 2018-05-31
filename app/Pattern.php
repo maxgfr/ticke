@@ -39,6 +39,11 @@ class Pattern extends Model
         return $this->hasMany(Repartition::class);
     }
 
+    public function batch()
+    {
+        return $this->hasMany(Batch::class);
+    }
+
     public function scopeNom ($query, $nom) {
         return $query->where('nom', 'LIKE', $nom);
     }

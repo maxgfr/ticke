@@ -62,7 +62,7 @@ Route::post('register', [
     'uses' => 'Auth\RegisterController@register'
 ]);
 
-/* AUTHENTIFIER */
+/* SI L'UTILISATEUR EST AUTHENTIFIE */
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/user', 'UserController@index')->name('user_profile');
@@ -83,11 +83,16 @@ Route::post('/repartition/store', 'RepartitionController@store')->name('repartit
 Route::post('/repartition/update', 'RepartitionController@update')->name('repartition.update');
 Route::delete('/repartition/destroy', 'RepartitionController@destroy')->name('repartition.destroy');
 
-Route::get('/entity/{id}/batchs', 'BatchController@index')->name('batch.index');
+Route::get('/batch', 'BatchController@index')->name('batch.index');
+Route::post('/batch', 'BatchController@post')->name('batch.post');
+Route::get('/entity/{id_entity}/pattern/{id_pattern}/batch', 'BatchController@getBatch')->name('batch.getbatch');
+Route::delete('/entity/{id_entity}/batchs/{id_batch}', 'BatchController@destroyBatch')->name('batch.destroy');
+
+Route::get('/entity/{id_entity}/pattern/{id_pattern}/batch/{id_batch}', 'BatchController@showBatch')->name('batch.show');
+Route::delete('/entity/{id_entity}/pattern/{id_pattern}/batch/{id_batch}/ticket/{id_ticket}', 'BatchController@destroyTickets')->name('batch.destroy_tickets');
+
 Route::post('/upload_tickets', 'BatchController@import')->name('upload_tickets');
-Route::get('/entity/{id_restau}/batchs/{id_batch}', 'BatchController@showBatch')->name('batch.show');
-Route::delete('/entity/{id_restau}/batchs/{id_batch}', 'BatchController@destroyBatch')->name('destroy_batch');
-Route::delete('/entity/{id_restau}/batchs/{id_batch}/id/{id_ticket}', 'BatchController@destroyTickets')->name('destroy_tickets');
+
 
 Route::get('/paiement-stage', 'PaymentController@indexPaiement')->name('page_payment_stripe');
 Route::post('/paiement-stage', 'PaymentController@payment')->name('payment_stripe');

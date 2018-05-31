@@ -45,10 +45,13 @@
           <a href="{{route('home')}}"><i class="px-nav-icon fa fa-th"></i><span class="px-nav-label"> Dashboard</span></a>
         </li>
       <li class="px-nav-item">
-        <a href="{{route('entity.index')}}"><i class="px-nav-icon fa fa-building"></i><span class="px-nav-label"> Entités</span></a>
+        <a href="{{route('batch.index')}}"><i class="px-nav-icon fa fa-thumbtack"></i><span class="px-nav-label"> Batch</span></a>
       </li>
       <li class="px-nav-item">
         <a href="{{route('pattern.index')}}"><i class="px-nav-icon fa fa-clipboard"></i><span class="px-nav-label"> Patterns</span></a>
+      </li>
+      <li class="px-nav-item">
+        <a href="{{route('entity.index')}}"><i class="px-nav-icon fa fa-building"></i><span class="px-nav-label"> Entités</span></a>
       </li>
       <li class="px-nav-item">
         <a href="{{route('page_payment_stripe')}}"><i class="px-nav-icon fa fa-money-bill-alt"></i><span class="px-nav-label"> Abonnement</span></a>
