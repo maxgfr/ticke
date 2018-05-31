@@ -39,6 +39,14 @@ class Batch extends Model
         return $this->belongsTo(Pattern::class);
     }
 
+    public function repartition()
+    {
+        return $this
+            ->belongsToMany('App\Repartition', 'ticket')
+            ->withPivot('value')
+            ->withTimestamps();
+    }
+
     public function scopeFilter ($query, $id) {
         return $query->where('pattern_id', $id);
     }

@@ -34,6 +34,14 @@ class Repartition extends Model
         return $this->belongsTo(Pattern::class);
     }
 
+    public function batch()
+    {
+        return $this
+            ->belongsToMany('App\Batch', 'ticket')
+            ->withPivot('value')
+            ->withTimestamps();
+    }
+
     public function ticket()
     {
         return $this->hasMany(Ticket::class);

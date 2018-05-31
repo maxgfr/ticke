@@ -41,41 +41,6 @@ class BatchController extends Controller
         return view('connected.batch_show', compact( 'id_pattern', 'id_entity', 'batchs', 'entity', 'pattern'));
     }
 
-    public function showBatch ($id_entity, $id_pattern, $id_batch) {
-        $entity = Entity::findOrFail($id_entity);
-        /* Security */
-        $id_user = Auth::user()->id;
-        if ($id_user != $entity->users_id) {
-            abort(404);
-        }
-        /* End security */
-        $batch = Batch::findOrFail($id_batch);
-        $tickets = $batch->ticket()->get();
-        return view('connected.batch_ticket', compact('tickets','batch', 'entity'));
-
-    }
-
-    public function destroyBatch ($id_entity, $id_batch) {
-        /* Security */
-        $entity = Entity::findOrFail($id_entity);
-        $id_user = Auth::user()->id;
-        if ($id_user != $entity->users_id) {
-            abort(404);
-        }
-        /* End security */
-        $bt = Batch::findOrFail($id_batch);
-        $id_pattern = $bt->pattern_id;
-        $bt->delete();
-        return redirect()->route('batch.getbatch', ['id_pattern' => $id_pattern, 'id_entity' => $id_entity])->with('error', 'Batch supprimé...');
-    }
-
-    public function destroyTickets ($id_entity, $id_pattern, $id_batch, $id_ticket) {
-        $tk = Ticket::findOrFail($id_ticket);
-        $tk->delete();
-        return redirect()->route('batch_ticket', ['id_entity' => $id_entity, 'id_batch' => $id_batch])->with('error', 'Ticket entity supprimé...');
-    }
-
-
     public function import (Request $request){
 
         $file = $request->file('file');
@@ -140,4 +105,43 @@ class BatchController extends Controller
 
         return redirect()->route('batch.getbatch', ['id_pattern' => $request->get('id_pattern'), 'id_entity' => $request->get('id_entity')])->with('success', 'Batch ajouté à la base avec succès!');
     }
+
+    public function showBatch ($id_entity, $id_pattern, $id_batch) {
+        $entity = Entity::findOrFail($id_entity);
+        /* Security */
+        $id_user = Auth::user()->id;
+        if ($id_user != $entity->users_id) {
+            abort(404);
+        }
+        /* End security */
+        $batch = Batch::findOrFail($id_batch);
+        $pattern = Pattern::findOrFail($id_pattern);
+        $repartitions = $batch->repartition()->get()->sortBy('emplacement');
+        $tickets = $batch->ticket()->get();
+        return view('connected.batch_ticket', compact('tickets','batch', 'entity', 'pattern', 'repartitions'));
+
+    }
+
+    public function destroyBatch ($id_entity, $id_batch) {
+        /* Security */
+        $entity = Entity::findOrFail($id_entity);
+        $id_user = Auth::user()->id;
+        if ($id_user != $entity->users_id) {
+            abort(404);
+        }
+        /* End security */
+        $bt = Batch::findOrFail($id_batch);
+        $id_pattern = $bt->pattern_id;
+        $bt->delete();
+        return redirect()->route('batch.getbatch', ['id_pattern' => $id_pattern, 'id_entity' => $id_entity])->with('error', 'Batch supprimé...');
+    }
+
+    public function destroyTickets ($id_entity, $id_pattern, $id_batch, $id_ticket) {
+        $tk = Ticket::findOrFail($id_ticket);
+        $tk->delete();
+        return redirect()->route('batch.show', ['id_entity' => $id_entity, 'id_batch' => $id_batch, 'id_pattern' => $id_pattern])->with('error', 'Ticket entity supprimé...');
+    }
+
+
+
 }
