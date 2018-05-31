@@ -43,8 +43,8 @@ class RepartitionController extends Controller
     public function store(Request $request)
     {
         $rules = array(
-            'emplacement' => 'required',
-            'total' => 'required',
+            'emplacement' => 'required|numeric',
+            'total' => 'required|numeric'
         );
         $validator = Validator::make(Input::all(), $rules);
         if ($validator->fails()) {
@@ -68,8 +68,8 @@ class RepartitionController extends Controller
     public function update(Request $req)
     {
         $rules = array(
-            'emplacement' => 'required',
-            'total' => 'required'
+            'emplacement' => 'required|numeric',
+            'total' => 'required|numeric'
         );
         $validator = Validator::make(Input::all(), $rules);
         if ($validator->fails()) {
@@ -97,12 +97,6 @@ class RepartitionController extends Controller
      public function destroy(Request $req)
      {
          $repartion = Repartition::findOrFail($req->id);
-         /* Security */
-         $id_user = Auth::user()->id;
-         if ($id_user != $repartion->users_id) {
-             abort(404);
-         }
-         /* End security */
          $repartion->delete();
          return response()->json();
      }
