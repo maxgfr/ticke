@@ -18,8 +18,8 @@ class CreateTicket extends Migration
             $table->double('value');
             $table->integer('repartition_id')->unsigned()->index();
             $table->foreign('repartition_id')->references('id')->on('repartition')->onDelete('cascade');
-            $table->integer('batch_id')->unsigned()->index();
-            $table->foreign('batch_id')->references('id')->on('batch')->onDelete('cascade');
+            $table->integer('repartition_id')->unsigned()->index();
+            $table->foreign('repartition_id')->references('id')->on('repartition')->onDelete('cascade');
             $table->timestamps();
         });
     }

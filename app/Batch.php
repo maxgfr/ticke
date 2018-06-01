@@ -29,22 +29,14 @@ class Batch extends Model
         'date', 'pattern_id'
     ];
 
-    public function ticket()
+    public function bigtickets()
     {
-        return $this->hasMany(Ticket::class, 'batch_id');
+        return $this->hasMany(BigTicket::class, 'batch_id');
     }
 
     public function pattern()
     {
         return $this->belongsTo(Pattern::class);
-    }
-
-    public function repartition()
-    {
-        return $this
-            ->belongsToMany('App\Repartition', 'ticket')
-            ->withPivot('value')
-            ->withTimestamps();
     }
 
     public function scopeFilter ($query, $id) {

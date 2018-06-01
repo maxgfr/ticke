@@ -4,14 +4,15 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Repartition extends Model
+class BigTicket extends Model
 {
+
     /**
      * The database table used by the model.
      *
      * @var string
      */
-    protected $table = 'repartition';
+    protected $table = 'bigticket';
 
     /**
      * The database primary key value.
@@ -26,24 +27,19 @@ class Repartition extends Model
      * @var array
      */
     protected $fillable = [
-        'total', 'pattern_id', 'emplacement', 'nom'
+        'bigvalue', 'batch_id'
     ];
 
-    public function enitity()
+    public function batch()
     {
-        return $this->belongsTo(Pattern::class);
+        return $this->belongsTo(Batch::class);
     }
 
-    public function bigticket()
+    public function repartition()
     {
         return $this
-            ->belongsToMany('App\BigTicket', 'ticket')
+            ->belongsToMany('App\Repartition', 'ticket')
             ->withPivot('value')
             ->withTimestamps();
-    }
-
-    public function ticket()
-    {
-        return $this->hasMany(Ticket::class);
     }
 }
