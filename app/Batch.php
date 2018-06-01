@@ -29,7 +29,7 @@ class Batch extends Model
         'date', 'pattern_id'
     ];
 
-    public function bigtickets()
+    public function bigticket()
     {
         return $this->hasMany(BigTicket::class, 'batch_id');
     }
@@ -41,9 +41,5 @@ class Batch extends Model
 
     public function scopeFilter ($query, $id) {
         return $query->where('pattern_id', $id);
-    }
-
-    public function scopeLast ($query) {
-        return $query->max('id');
     }
 }

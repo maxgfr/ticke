@@ -42,13 +42,13 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($repartitions as $rep)
-                                <tr class="post{{$rep->pivot->id}}">
-                                    @foreach($repartitions as $rep)
-                                        <td class="text-center">{{$rep->pivot->value}}</td>
+                            @foreach($bigtickets as $bticket)
+                                <tr class="post{{$bticket->id}}">
+                                    @foreach($bticket->repartition()->get()->sortBy('emplacement') as $tkt)
+                                        <td class="text-center">{{$tkt->pivot->value}}</td>
                                     @endforeach
                                     <td class="text-center">
-                                        {!! Form::model($rep, ['method' => 'DELETE', 'route' => ['batch.destroy_tickets', $entity->id, $pattern->id, $batch->id, $rep->pivot->id], 'style' => 'display:inline;']) !!}
+                                        {!! Form::model($bticket, ['method' => 'DELETE', 'route' => ['batch.destroy_tickets', $entity->id, $pattern->id, $batch->id, $bticket->id], 'style' => 'display:inline;']) !!}
                                         {!! csrf_field() !!}
                                         {!! Form::submit('Supprimer', ['class' => 'btn btn-outline btn-danger btn-xs']) !!}
                                         {!! Form::close() !!}

@@ -18,8 +18,8 @@ class CreateTicket extends Migration
             $table->double('value');
             $table->integer('repartition_id')->unsigned()->index();
             $table->foreign('repartition_id')->references('id')->on('repartition')->onDelete('cascade');
-            $table->integer('bigticket_id')->unsigned()->index();
-            $table->foreign('bigticket_id')->references('id')->on('bigticket')->onDelete('cascade');
+            $table->integer('big_ticket_id')->unsigned()->index();
+            $table->foreign('big_ticket_id')->references('id')->on('bigticket')->onDelete('cascade');
             $table->timestamps();
         });
     }

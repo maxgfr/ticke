@@ -42,4 +42,8 @@ class BigTicket extends Model
             ->withPivot('value')
             ->withTimestamps();
     }
+
+    public function scopeLastMax ($query) {
+        return $query->max('id');
+    }
 }

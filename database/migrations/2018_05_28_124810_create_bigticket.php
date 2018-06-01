@@ -16,7 +16,7 @@ class CreateBigticket extends Migration
         Schema::create('bigticket', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('bigvalue');
-            $table->integer('batch_id')->unsigned()->index();
+            $table->integer('batch_id')->unsigned()->nullable()->index();
             $table->foreign('batch_id')->references('id')->on('batch')->onDelete('cascade');
             $table->timestamps();
         });

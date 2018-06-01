@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Batch;
 use App\Ticket;
+use App\BigTicket;
 use App\Pattern;
 use App\Entity;
 use Carbon\Carbon;
@@ -82,25 +83,32 @@ class BatchController extends Controller
             }
             //dd($repartitions,$batch_id, $repartition_id, $total, $total_item, $nb_emplacement);
             $length_tab = 0;
+            $length_realtab = 0;
             $answers = [];
+            $realvalue = [];
             $content = file($file);
+            $fake_value = BigTicket::create(['bigvalue' => 0, 'batch_id' => null]);
+            $last_increment = $fake_value->id;
             foreach ($content as $line) {
                 if (strlen($line) == $total_item+1) {
                     $then = 0;
+                    $last_increment++;
+                    $realvalue[$length_realtab] = ['bigvalue' => $line, 'batch_id' => $batch_id];
+                    $length_realtab++;
                     for ($i = 0; $i<$nb_emplacement ; $i++) {
                         $nb_total_take = $total[$i];
                         $id_repartiton = $repartition_id[$i];
                         $value = substr($line, $then, $nb_total_take);
                         //DB::table('ticket')->insertGetId(['value' => $value, 'batch_id' => $batch_id, 'repartition_id' => $id_repartiton]);
-                        $answers[$length_tab] = ['value' => $value, 'batch_id' => $batch_id, 'repartition_id' => $id_repartiton];
+                        $answers[$length_tab] = ['value' => $value, 'bigticket_id' => $last_increment, 'repartition_id' => $id_repartiton];
                         $length_tab++;
                         $then += $nb_total_take;
                     }
                 }
             }
-            //dd($answers);
+            //dd($answers,$realvalue);
+            BigTicket::insert($realvalue);
             Ticket::insert($answers);
-
         }
 
         return redirect()->route('batch.getbatch', ['id_pattern' => $request->get('id_pattern'), 'id_entity' => $request->get('id_entity')])->with('success', 'Batch ajouté à la base avec succès!');
@@ -116,9 +124,15 @@ class BatchController extends Controller
         /* End security */
         $batch = Batch::findOrFail($id_batch);
         $pattern = Pattern::findOrFail($id_pattern);
-        $repartitions = $batch->repartition()->get()->sortBy('emplacement');
-        $tickets = $batch->ticket()->get();
-        return view('connected.batch_ticket', compact('tickets','batch', 'entity', 'pattern', 'repartitions'));
+        $repartitions = $pattern->repartition()->get()->sortBy('emplacement');
+        $bigtickets = $batch->bigticket()->get();
+        $nb_repartitions = count($repartitions);
+        /*foreach($bigtickets as $bticket) {
+            $tickets[0] = $bticket->repartition()->get();
+            dd($tickets);
+        }*/
+        //dd($bigtickets, $repartitions);
+        return view('connected.batch_ticket', compact('batch', 'bigtickets', 'entity', 'pattern', 'repartitions', 'nb_repartitions'));
 
     }
 
@@ -137,9 +151,9 @@ class BatchController extends Controller
     }
 
     public function destroyTickets ($id_entity, $id_pattern, $id_batch, $id_ticket) {
-        $tk = Ticket::findOrFail($id_ticket);
+        $tk = BigTicket::findOrFail($id_ticket);
         $tk->delete();
-        return redirect()->route('batch.show', ['id_entity' => $id_entity, 'id_batch' => $id_batch, 'id_pattern' => $id_pattern])->with('error', 'Ticket entity supprimé...');
+        return redirect()->route('batch.show', ['id_entity' => $id_entity, 'id_batch' => $id_batch, 'id_pattern' => $id_pattern])->with('error', 'Ticket supprimé...');
     }
 
 
