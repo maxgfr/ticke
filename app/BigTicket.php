@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class BigTicket extends Model
 {
-
     /**
      * The database table used by the model.
      *

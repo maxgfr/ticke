@@ -61,6 +61,7 @@ class BatchController extends Controller
             return redirect()->back()->with('error', $messages);
         }
         else {
+            $created_at = now();
 
             $id_pattern = $request->get('id_pattern');
             $id_entity = $request->get('id_entity');
@@ -95,14 +96,14 @@ class BatchController extends Controller
                 if (strlen($line) == $total_item+1) {
                     $then = 0;
                     $last_increment++;
-                    $realvalue[$length_realtab] = ['bigvalue' => $line, 'batch_id' => $batch_id];
+                    $realvalue[$length_realtab] = ['bigvalue' => $line, 'batch_id' => $batch_id, 'created_at' => $created_at];
                     $length_realtab++;
                     for ($i = 0; $i<$nb_emplacement ; $i++) {
                         $nb_total_take = $total[$i];
                         $id_repartiton = $repartition_id[$i];
                         $value = substr($line, $then, $nb_total_take);
                         //DB::table('ticket')->insertGetId(['value' => $value, 'batch_id' => $batch_id, 'repartition_id' => $id_repartiton]);
-                        $answers[$length_tab] = ['value' => $value, 'big_ticket_id' => $last_increment, 'repartition_id' => $id_repartiton];
+                        $answers[$length_tab] = ['value' => $value, 'big_ticket_id' => $last_increment, 'repartition_id' => $id_repartiton, 'created_at' => $created_at];
                         $length_tab++;
                         $then += $nb_total_take;
                     }

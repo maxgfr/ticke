@@ -27,7 +27,7 @@ class Ticket extends Model
      */
 
     protected $fillable = [
-        'value', 'batch_id', 'big_ticket_id'
+        'value', 'batch_id', 'big_ticket_id', 'created_at'
     ];
 
     public function batch()
