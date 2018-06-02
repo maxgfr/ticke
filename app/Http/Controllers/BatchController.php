@@ -92,6 +92,7 @@ class BatchController extends Controller
             $content = file($file);
             $fake_value = BigTicket::create(['bigvalue' => 0, 'batch_id' => null]);
             $last_increment = $fake_value->id;
+            $id_to_delete = $fake_value->id;
             foreach ($content as $line) {
                 if (strlen($line) == $total_item+1) {
                     $then = 0;
@@ -115,6 +116,8 @@ class BatchController extends Controller
             //dd($answers,$realvalue);
             BigTicket::insert($realvalue);
             Ticket::insert($answers);
+            //delete NULL object
+            BigTicket::destroy($id_to_delete);
         }
 
         return redirect()->route('batch.getbatch', ['id_pattern' => $request->get('id_pattern'), 'id_entity' => $request->get('id_entity')])->with('success', 'Batch ajouté à la base avec succès!');
