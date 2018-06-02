@@ -18,6 +18,8 @@ class CreateBatch extends Migration
             $table->date('date');
             $table->integer('pattern_id')->unsigned()->index();
             $table->foreign('pattern_id')->references('id')->on('pattern')->onDelete('cascade');
+            $table->integer('entity_id')->unsigned()->index();
+            $table->foreign('entity_id')->references('id')->on('entity')->onDelete('cascade');
             $table->timestamps();
         });
     }

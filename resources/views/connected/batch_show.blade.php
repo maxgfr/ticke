@@ -61,16 +61,16 @@
                         </thead>
                         <tbody>
                             @foreach($batchs as $btch)
-                                <tr class="post{{$btch->id}}">
-                                    <td class="text-center">{{$btch->id}}</td>
-                                    <td class="text-center">{{$btch->date}}</td>
+                                <tr class="post{{$btch->pivot->id}}">
+                                    <td class="text-center">{{$btch->pivot->id}}</td>
+                                    <td class="text-center">{{$btch->pivot->date}}</td>
                                     <td class="text-center">
                                         <div class="row">
                                             <div class="col-lg-6">
-                                                <a href="{{ route('batch.show', ['id_entity' => $entity->id, 'id_pattern' => $pattern->id, 'id_batch' => $btch->id, 'id_entity' => $entity->id]) }}" class="btn btn-primary btn-sm"><i class="fa fa-arrow-right"></i> Informations</a>
+                                                <a href="{{ route('batch.show', ['id_entity' => $entity->id, 'id_pattern' => $pattern->id, 'id_batch' => $btch->pivot->id, 'id_entity' => $entity->id]) }}" class="btn btn-primary btn-sm"><i class="fa fa-arrow-right"></i> Informations</a>
                                             </div>
                                             <div class="col-lg-6">
-                                                {!! Form::model($btch, ['method' => 'DELETE', 'route' => ['batch.destroy', $entity->id, $btch->id ], 'style' => 'display:inline;']) !!}
+                                                {!! Form::model($btch, ['method' => 'DELETE', 'route' => ['batch.destroy', $entity->id, $btch->pivot->id ], 'style' => 'display:inline;']) !!}
                                                 {!! csrf_field() !!}
                                                 {!! Form::button('<i class="fa fa-trash-alt" aria-hidden="true"></i> Supprimer', ['class' => 'btn btn-danger btn-sm', 'type' => 'submit']) !!}
                                                 {!! Form::close() !!}

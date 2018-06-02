@@ -63,10 +63,12 @@ class BatchController extends Controller
         else {
 
             $id_pattern = $request->get('id_pattern');
+            $id_entity = $request->get('id_entity');
 
             $batch = Batch::create([
                 'date' => Carbon::now(),
                 'pattern_id' => $id_pattern,
+                'entity_id' => $id_entity
             ]);
             $batch_id = $batch->id;
 
@@ -100,10 +102,13 @@ class BatchController extends Controller
                         $id_repartiton = $repartition_id[$i];
                         $value = substr($line, $then, $nb_total_take);
                         //DB::table('ticket')->insertGetId(['value' => $value, 'batch_id' => $batch_id, 'repartition_id' => $id_repartiton]);
-                        $answers[$length_tab] = ['value' => $value, 'bigticket_id' => $last_increment, 'repartition_id' => $id_repartiton];
+                        $answers[$length_tab] = ['value' => $value, 'big_ticket_id' => $last_increment, 'repartition_id' => $id_repartiton];
                         $length_tab++;
                         $then += $nb_total_take;
                     }
+                } else {
+                    $batch->delete();
+                    return redirect()->route('batch.getbatch', ['id_pattern' => $request->get('id_pattern'), 'id_entity' => $request->get('id_entity')])->with('error', 'Batch ne correspondant pas au pattern associé!');
                 }
             }
             //dd($answers,$realvalue);

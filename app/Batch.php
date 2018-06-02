@@ -26,7 +26,7 @@ class Batch extends Model
      * @var array
      */
     protected $fillable = [
-        'date', 'pattern_id'
+        'date', 'pattern_id', 'entity_id'
     ];
 
     public function bigticket()
@@ -37,6 +37,11 @@ class Batch extends Model
     public function pattern()
     {
         return $this->belongsTo(Pattern::class);
+    }
+
+    public function entity()
+    {
+        return $this->belongsTo(Entity::class);
     }
 
     public function scopeFilter ($query, $id) {

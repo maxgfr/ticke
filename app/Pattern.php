@@ -41,7 +41,11 @@ class Pattern extends Model
 
     public function batch()
     {
-        return $this->hasMany(Batch::class);
+        return $this
+            ->belongsToMany('App\Entity', 'batch')
+            ->withPivot('date')
+            ->withPivot('id')
+            ->withTimestamps();
     }
 
     public function scopeNom ($query, $nom) {

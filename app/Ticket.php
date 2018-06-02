@@ -27,7 +27,7 @@ class Ticket extends Model
      */
 
     protected $fillable = [
-        'value', 'batch_id', 'repartition_id'
+        'value', 'batch_id', 'big_ticket_id'
     ];
 
     public function batch()
@@ -35,8 +35,8 @@ class Ticket extends Model
         return $this->belongsTo(Batch::class);
     }
 
-    public function repartition()
+    public function big_ticket()
     {
-        return $this->belongsTo(Repartition::class);
+        return $this->belongsTo(BigTicket::class);
     }
 }

@@ -36,6 +36,10 @@ class Entity extends Model
 
     public function pattern()
     {
-        return $this->hasMany(Pattern::class, 'entity_id');
+        return $this
+            ->belongsToMany('App\Pattern', 'batch')
+            ->withPivot('date')
+            ->withPivot('id')
+            ->withTimestamps();
     }
 }
