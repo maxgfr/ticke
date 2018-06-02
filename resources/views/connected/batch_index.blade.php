@@ -4,14 +4,14 @@
 
     <div class="px-content">
         <div class="page-header">
-            <h1><span class="text-muted font-weight-light"><i class="fa fa-thumbtack"></i></span> Batch</h1>
+            <h1><span class="text-muted font-weight-light"><i class="fa fa-thumbtack"></i></span> Gestion des batchs</h1>
         </div>
 
         <div class="panel">
             <div class="panel-heading">
                 <div class="col-lg-12">
                     <div class="panel-title">
-                        Batch
+                        Batchs
                     </div>
                 </div>
             </div>

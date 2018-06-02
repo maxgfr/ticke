@@ -5,150 +5,42 @@
     <div class="px-content">
 
         <div class="page-header m-b-0">
-          <div class="row">
-            <div class="col-md-4">
-              <h1><i class="page-header-icon fa fa-th"></i>Dashboard <span class="text-muted font-weight-light"></span></h1>
-            </div>
-          </div>
-        </div>
-
-        <!-- Balance -->
-        <div class="page-wide-block">
-            <div class="box m-b-0 valign-middle bg-white">
-
-                <div class="box-cell col-md-7 p-a-4">
-                    <div>
-                        <span class="font-size-18 font-weight-light">Balance</span>&nbsp;&nbsp;
-                        <span class="text-success">12% <i class="ion-arrow-up-c"></i></span>
-                    </div>
-                    <div class="font-size-34"><small class="font-weight-light text-muted">$</small><strong>31,600</strong></div>
-                </div>
-
-                <!-- Balance chart -->
-                <div class="box-cell col-sm-5 p-a-4">
-                    <span id="balance-chart"></span>
+            <div class="row">
+                <div class="col-md-4">
+                    <h1><i class="page-header-icon fa fa-th"></i>Dashboard <span class="text-muted font-weight-light"></span></h1>
                 </div>
             </div>
         </div>
-        <!-- / Balance -->
 
-        <!-- Money flow charts -->
-        <div class="page-wide-block">
-            <div class="box border-radius-0 bg-black">
 
-                <!-- Revenue -->
-                <div class="box-cell col-md-6 p-a-4 bg-black darken">
-                    <div>
-                        <span class="font-size-17 font-weight-light">Revenue</span>&nbsp;&nbsp;
-                        <span class="text-success">9% <i class="ion-arrow-up-c"></i></span>
+        <div class="px-content">
+
+            <div class="col-md-6">
+                <a href="/batch" class="panel panel-primary widget p-lg text-center">
+                    <div class="m-b-md">
+                        <i class="fa fa-eye fa-4x"></i>
+                        <h3 class="font-bold no-margins">
+                            Voir mes batchs
+                        </h3>
                     </div>
-                    <div class="text-muted font-size-11 font-weight-light">past 30 days</div>
-                    <div class="font-size-34"><small class="font-weight-light text-muted">$</small><strong>3,239</strong></div>
-
-                    <!-- Chart -->
-                    <div class="p-t-4">
-                        <canvas id="revenue-chart" width="400" height="150"></canvas>
-                    </div>
-                </div>
-
-                <hr class="m-a-0 visible-xs visible-sm">
-
-                <!-- Expenses -->
-                <div class="box-cell col-md-6 p-a-4">
-                    <div>
-                        <span class="font-size-17 font-weight-light">Expenses</span>&nbsp;&nbsp;
-                        <span class="text-danger">5% <i class="ion-arrow-down-c"></i></span>
-                    </div>
-                    <div class="text-muted font-size-11 font-weight-light">past 30 days</div>
-                    <div class="font-size-34"><small class="font-weight-light text-muted">$</small><strong>1,273</strong></div>
-
-                    <!-- Chart -->
-                    <div class="p-t-4">
-                        <canvas id="expenses-chart" width="400" height="150"></canvas>
-                    </div>
-                </div>
+                </a>
             </div>
+
+            <div class="col-md-6">
+                <a href="/pattern" class="panel panel-primary widget p-lg text-center">
+                    <div class="m-b-md">
+                        <i class="fa fa-plus fa-4x"></i>
+                        <h3 class="font-bold no-margins">
+                            Ajouter un pattern
+                        </h3>
+                    </div>
+                </a>
+            </div>
+
+
         </div>
-        <!-- / Money flow charts -->
+
     </div>
-
-    <script>
-      // -------------------------------------------------------------------------
-      // Initialize balance chart
-
-      $(function() {
-        if (pxUtil.default) { pxUtil = pxUtil.default; }
-
-        var chartColor = 1;
-        var data = [31600,31600,31600,31600,31600,31600];
-
-        $("#balance-chart").pxSparkline(data, {
-          type: 'line',
-          width: '100%',
-          height: '60px',
-          fillColor: 2,
-          lineColor: chartColor,
-          lineWidth: 1,
-          spotColor: null,
-          minSpotColor: null,
-          maxSpotColor: null,
-          highlightSpotColor: chartColor,
-          highlightLineColor: chartColor,
-          spotRadius: 3,
-        });
-      });
-
-      // -------------------------------------------------------------------------
-      // Initialize revenue chart
-
-      $(function() {
-
-        var chartColor = 1;
-        var data = {
-          labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-          datasets: [{
-            label:           'Revenue, $',
-            data:            [31600,31600,31600,31600,31600,31600,31500],
-            borderWidth:     1,
-            backgroundColor: 1,
-            borderColor:     chartColor,
-          }],
-        };
-
-        new Chart(document.getElementById('revenue-chart').getContext("2d"), {
-          type: 'line',
-          data: data,
-          options: {
-            legend: { display: false },
-          },
-        });
-      });
-
-      // -------------------------------------------------------------------------
-      // Initialize expenses chart
-
-      $(function() {
-        var chartColor = 1;
-        var data = {
-          labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-          datasets: [{
-            label:           'Expenses, $',
-            data:            [31600,31600,31600,31600,31600,31600,31500],
-            borderWidth:     1,
-            backgroundColor: 1,
-            borderColor:     chartColor,
-          }],
-        };
-
-        new Chart(document.getElementById('expenses-chart').getContext("2d"), {
-          type: 'bar',
-          data: data,
-          options: {
-            legend: { display: false },
-          },
-        });
-      });
-    </script>
 
 
 @endsection

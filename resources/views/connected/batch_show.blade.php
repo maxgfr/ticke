@@ -5,7 +5,7 @@
     <div class="px-content">
 
         <div class="page-header">
-            <h1><span class="text-muted font-weight-light"><a href="{{route('batch.index')}}"><i class="fa fa-ticket-alt"></i> Gestion des batchs </a>  / </span>{{$entity->nom}}  (pattern : {{$pattern->nom}}) </h1>
+            <h1><span class="text-muted font-weight-light"><a href="{{route('batch.index')}}"><i class="fa fa-chevron-circle-left"></i> Sélection du pattern / de l'entité </a>  / </span>{{$entity->nom}}  (pattern : {{$pattern->nom}}) </h1>
         </div>
 
         <div class="panel">

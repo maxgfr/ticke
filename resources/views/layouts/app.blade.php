@@ -48,7 +48,7 @@
         <a href="{{route('barcode.index')}}"><i class="px-nav-icon fa fa-barcode"></i><span class="px-nav-label"> Barcode</span></a>
       </li>
       <li class="px-nav-item">
-        <a href="{{route('batch.index')}}"><i class="px-nav-icon fa fa-thumbtack"></i><span class="px-nav-label"> Batch</span></a>
+        <a href="{{route('batch.index')}}"><i class="px-nav-icon fa fa-thumbtack"></i><span class="px-nav-label"> Batchs</span></a>
       </li>
       <li class="px-nav-item">
         <a href="{{route('pattern.index')}}"><i class="px-nav-icon fa fa-clipboard"></i><span class="px-nav-label"> Patterns</span></a>

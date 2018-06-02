@@ -4,7 +4,7 @@
 
     <div class="px-content">
         <div class="page-header">
-            <h1><span class="text-muted font-weight-light"><i class="fa fa-thumbtack"></i></span> Tickets</h1>
+            <h1><span class="text-muted font-weight-light"><a href="{{URL::previous()}}"><i class="fa fa-chevron-circle-left"></i> Gestion des batchs </a>  / </span> Liste des tickets </h1>
         </div>
 
         <div class="panel">
