@@ -43,7 +43,10 @@
     <ul class="px-nav-content">
         <li class="px-nav-item">
           <a href="{{route('home')}}"><i class="px-nav-icon fa fa-th"></i><span class="px-nav-label"> Dashboard</span></a>
-        </li>
+      </li>
+      <li class="px-nav-item">
+        <a href="{{route('barcode.index')}}"><i class="px-nav-icon fa fa-barcode"></i><span class="px-nav-label"> Barcode</span></a>
+      </li>
       <li class="px-nav-item">
         <a href="{{route('batch.index')}}"><i class="px-nav-icon fa fa-thumbtack"></i><span class="px-nav-label"> Batch</span></a>
       </li>

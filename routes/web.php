@@ -93,6 +93,8 @@ Route::delete('/entity/{id_entity}/pattern/{id_pattern}/batch/{id_batch}/ticket/
 
 Route::post('/upload_tickets', 'BatchController@import')->name('upload_tickets');
 
-
 Route::get('/paiement-stage', 'PaymentController@indexPaiement')->name('page_payment_stripe');
 Route::post('/paiement-stage', 'PaymentController@payment')->name('payment_stripe');
+
+Route::get('/barcode', 'BarcodeController@index')->name('barcode.index');
+Route::get('/entity/{id_entity}/pattern/{id_pattern}/barcode', 'BarcodeController@getBarcode')->name('barcode.getBarcode');

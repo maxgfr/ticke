@@ -165,6 +165,4 @@ class BatchController extends Controller
         return redirect()->route('batch.show', ['id_entity' => $id_entity, 'id_batch' => $id_batch, 'id_pattern' => $id_pattern])->with('error', 'Ticket supprimé...');
     }
 
-
-
 }
