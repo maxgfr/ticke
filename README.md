@@ -32,12 +32,21 @@ APP_CODE_PATH_HOST=../
 docker-compose up -d nginx mysql phpmyadmin redis workspace
 ```
 
-## Commands
+### Commands
 
 To connect to container :
 ```
 docker-compose exec workspace bash
 docker-compose exec workspace mysql
+```
+
+##Test API
+
+```shell
+curl -X POST http://localhost:8000/api/register \
+ -H "Accept: application/json" \
+ -H "Content-Type: application/json" \
+ -d '{"name": "Doe", "firstname": "John", "mobile": "0621425347", "email": "john-doe@max.com", "password": "maxmaxmax", "password-confirm": "maxmaxmax"}'
 ```
 
 ## Problems :

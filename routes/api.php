@@ -21,6 +21,7 @@ use App\User;
 */
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
+    dd($request);
     return $request->user();
 });
 
@@ -29,10 +30,20 @@ Route::post('register', [
     'uses' => 'Auth\RegisterController@register'
 ]);
 
-Route::get('batchs', function() {
-    Auth::guard('remember_token')->id();
-    $entities = Auth::user()->entity()->get();
-    $patterns = Auth::user()->pattern()->get();
+Route::get('connection', function(Request $request) {
+    dd($request);
+    $user_connected = User::findOrFail();
+    $entities = $user_connected->entity()->get();
+    $patterns = $user_connected->pattern()->get();
+    return Batch::all();
+});
+
+
+Route::get('batchs', function(Request $request) {
+    dd($request);
+    $user_connected = User::findOrFail();
+    $entities = $user_connected->entity()->get();
+    $patterns = $user_connected->pattern()->get();
     return Batch::all();
 });
 
