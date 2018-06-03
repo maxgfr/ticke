@@ -20,15 +20,28 @@ use App\User;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    dd($request);
-    return $request->user();
-});
-
 Route::post('register', [
     'as' => '',
     'uses' => 'Auth\RegisterController@register'
 ]);
+
+
+Route::post('login', function(Request $request) {
+    $credentials = $request->only('email', 'password');
+    if ( ! $token = JWTAuth::attempt($credentials)) {
+           return response([
+               'status' => 'error',
+               'error' => 'invalid.credentials',
+               'msg' => 'Invalid Credentials.'
+           ], 400);
+    }
+    return response([
+           'status' => 'success',
+           'token' => $token
+       ]);
+});
+
+
 
 Route::get('connection', function(Request $request) {
     dd($request);

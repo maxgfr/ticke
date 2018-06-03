@@ -217,6 +217,8 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         'DNS1D' => Milon\Barcode\Facades\DNS1DFacade::class,
         'DNS2D' => Milon\Barcode\Facades\DNS2DFacade::class,
+        'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
+
 
     ],
 

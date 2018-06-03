@@ -47,4 +47,5 @@ class User extends Authenticatable
         $this->save();
         return $this->api_token;
     }
+
 }

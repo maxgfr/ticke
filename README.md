@@ -42,15 +42,15 @@ docker-compose exec workspace mysql
 
 ### Problems :
 
-### 1° In laradock/
+#### 1° In laradock/
 
-#### Restart containers
+Restart containers :
 ```
 docker-compose down
 docker-compose up -d nginx mysql phpmyadmin redis workspace
 ```
 
-#### Connect to a container
+Connect to a container :
 ```
 docker-compose exec workspace bash
 composer install
@@ -60,7 +60,8 @@ php artisan config:cache
 php artisan migrate
 ```
 
-#### Switch from mysql to mariadb
+Switch from mysql to mariadb :
+
 To use with MariaDB, in laradock open .env and set PMA_DB_ENGINE=mysql to PMA_DB_ENGINE=mariadb
 ```
 docker-compose down
@@ -87,9 +88,19 @@ chmod -R 777 storage bootstrap/cache
 
 ## Test API
 
+### Register
+
 ```shell
 curl -X POST http://localhost:8000/api/register \
  -H "Accept: application/json" \
  -H "Content-Type: application/json" \
  -d '{"name": "Doe", "firstname": "John", "mobile": "0621425347", "email": "john-doe@max.com", "password": "maxmaxmax", "password-confirm": "maxmaxmax"}'
+```
+### Login
+
+```shell
+curl -X POST http://localhost:8000/api/login \
+ -H "Accept: application/json" \
+ -H "Content-Type: application/json" \
+ -d '{"email": "john-doe@max.com", "password": "maxmaxmax"}'
 ```
