@@ -40,16 +40,7 @@ docker-compose exec workspace bash
 docker-compose exec workspace mysql
 ```
 
-##Test API
-
-```shell
-curl -X POST http://localhost:8000/api/register \
- -H "Accept: application/json" \
- -H "Content-Type: application/json" \
- -d '{"name": "Doe", "firstname": "John", "mobile": "0621425347", "email": "john-doe@max.com", "password": "maxmaxmax", "password-confirm": "maxmaxmax"}'
-```
-
-## Problems :
+### Problems :
 
 ### 1° In laradock/
 
@@ -92,4 +83,13 @@ php artisan config:cache
 
 ```
 chmod -R 777 storage bootstrap/cache
+```
+
+## Test API
+
+```shell
+curl -X POST http://localhost:8000/api/register \
+ -H "Accept: application/json" \
+ -H "Content-Type: application/json" \
+ -d '{"name": "Doe", "firstname": "John", "mobile": "0621425347", "email": "john-doe@max.com", "password": "maxmaxmax", "password-confirm": "maxmaxmax"}'
 ```
