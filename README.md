@@ -86,6 +86,10 @@ php artisan config:cache
 chmod -R 777 storage bootstrap/cache
 ```
 
+### 3° JWT - Laravel 5.6 :
+
+https://github.com/tymondesigns/jwt-auth/issues/1038
+
 ## Test API
 
 ### Register
