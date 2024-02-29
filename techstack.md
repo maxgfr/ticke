@@ -3,17 +3,17 @@
 ## Tech Stack
 maxgfr/ticke is built on the following main stack:
 
-- [PHP](http://www.php.net/) – Languages
-- [Laravel](http://laravel.com/) – Frameworks (Full Stack)
-- [jQuery](http://jquery.com/) – Javascript UI Libraries
-- [Bootstrap](http://getbootstrap.com/) – Front-End Frameworks
 - [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) – Languages
-- [PHPUnit](https://phpunit.de/) – Testing Frameworks
-- [Lodash](https://lodash.com) – Javascript Utilities & Libraries
+- [PHP](http://www.php.net/) – Languages
+- [Bootstrap](http://getbootstrap.com/) – Front-End Frameworks
+- [Laravel](http://laravel.com/) – Frameworks (Full Stack)
 - [Vue.js](http://vuejs.org/) – Javascript UI Libraries
+- [jQuery](http://jquery.com/) – Javascript UI Libraries
+- [PHPUnit](https://phpunit.de/) – Testing Frameworks
+- [Yarn](https://yarnpkg.com/) – Front End Package Manager
+- [Lodash](https://lodash.com) – Javascript Utilities & Libraries
 - [Shell](https://en.wikipedia.org/wiki/Shell_script) – Shells
 - [axios](https://github.com/mzabriskie/axios) – Javascript Utilities & Libraries
-- [Yarn](https://yarnpkg.com/) – Front End Package Manager
 
 Full tech stack [here](/techstack.md)
 
@@ -23,17 +23,17 @@ Full tech stack [here](/techstack.md)
 ## Tech Stack
 maxgfr/ticke is built on the following main stack:
 
-- <img width='25' height='25' src='https://img.stackshare.io/service/991/hwUcGZ41_400x400.jpg' alt='PHP'/> [PHP](http://www.php.net/) – Languages
-- <img width='25' height='25' src='https://img.stackshare.io/service/992/AcA2LnWL_400x400.jpg' alt='Laravel'/> [Laravel](http://laravel.com/) – Frameworks (Full Stack)
-- <img width='25' height='25' src='https://img.stackshare.io/service/1021/lxEKmMnB_400x400.jpg' alt='jQuery'/> [jQuery](http://jquery.com/) – Javascript UI Libraries
-- <img width='25' height='25' src='https://img.stackshare.io/service/1101/C9QJ7V3X.png' alt='Bootstrap'/> [Bootstrap](http://getbootstrap.com/) – Front-End Frameworks
 - <img width='25' height='25' src='https://img.stackshare.io/service/1209/javascript.jpeg' alt='JavaScript'/> [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) – Languages
-- <img width='25' height='25' src='https://img.stackshare.io/service/1616/1_WsEnddd5Y4EgEHsT054kUQ.jpeg' alt='PHPUnit'/> [PHPUnit](https://phpunit.de/) – Testing Frameworks
-- <img width='25' height='25' src='https://img.stackshare.io/service/2438/lodash.png' alt='Lodash'/> [Lodash](https://lodash.com) – Javascript Utilities & Libraries
+- <img width='25' height='25' src='https://img.stackshare.io/service/991/hwUcGZ41_400x400.jpg' alt='PHP'/> [PHP](http://www.php.net/) – Languages
+- <img width='25' height='25' src='https://img.stackshare.io/service/1101/C9QJ7V3X.png' alt='Bootstrap'/> [Bootstrap](http://getbootstrap.com/) – Front-End Frameworks
+- <img width='25' height='25' src='https://img.stackshare.io/service/992/AcA2LnWL_400x400.jpg' alt='Laravel'/> [Laravel](http://laravel.com/) – Frameworks (Full Stack)
 - <img width='25' height='25' src='https://img.stackshare.io/service/3837/paeckCWC.png' alt='Vue.js'/> [Vue.js](http://vuejs.org/) – Javascript UI Libraries
+- <img width='25' height='25' src='https://img.stackshare.io/service/1021/lxEKmMnB_400x400.jpg' alt='jQuery'/> [jQuery](http://jquery.com/) – Javascript UI Libraries
+- <img width='25' height='25' src='https://img.stackshare.io/service/1616/1_WsEnddd5Y4EgEHsT054kUQ.jpeg' alt='PHPUnit'/> [PHPUnit](https://phpunit.de/) – Testing Frameworks
+- <img width='25' height='25' src='https://img.stackshare.io/service/5848/44mC-kJ3.jpg' alt='Yarn'/> [Yarn](https://yarnpkg.com/) – Front End Package Manager
+- <img width='25' height='25' src='https://img.stackshare.io/service/2438/lodash.png' alt='Lodash'/> [Lodash](https://lodash.com) – Javascript Utilities & Libraries
 - <img width='25' height='25' src='https://img.stackshare.io/service/4631/default_c2062d40130562bdc836c13dbca02d318205a962.png' alt='Shell'/> [Shell](https://en.wikipedia.org/wiki/Shell_script) – Shells
 - <img width='25' height='25' src='https://img.stackshare.io/no-img-open-source.png' alt='axios'/> [axios](https://github.com/mzabriskie/axios) – Javascript Utilities & Libraries
-- <img width='25' height='25' src='https://img.stackshare.io/service/5848/44mC-kJ3.jpg' alt='Yarn'/> [Yarn](https://yarnpkg.com/) – Front End Package Manager
 
 Full tech stack [here](/techstack.md)
 
@@ -44,7 +44,7 @@ Full tech stack [here](/techstack.md)
 # Tech Stack File
 ![](https://img.stackshare.io/repo.svg "repo") [maxgfr/ticke](https://github.com/maxgfr/ticke)![](https://img.stackshare.io/public_badge.svg "public")
 <br/><br/>
-|18<br/>Tools used|01/05/24 <br/>Report generated|
+|18<br/>Tools used|02/29/24 <br/>Report generated|
 |------|------|
 </div>
 
